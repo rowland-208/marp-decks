@@ -104,6 +104,11 @@ celerybeat.pid
 
 # Node
 node_modules/
+package.json
+pnpm-lock.yaml
+
+# Marp build output
+*.html
 
 # Claude Code
 .claude/*
