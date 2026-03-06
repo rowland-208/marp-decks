@@ -1,6 +1,6 @@
 # Marp Decks
 
-Presentation slide decks built with [Marp](https://marp.app/), a Markdown-based slide framework.
+Presentation slide decks built with marp and claude code.
 
 ## Examples
 
@@ -9,8 +9,6 @@ Examples generated with the marp-decks repo and served using github pages. Follo
 [https://rowland-208.github.io/marp-decks/](https://rowland-208.github.io/marp-decks/)
 
 ## Getting Started
-
-This project is designed to be used with [Claude Code](https://claude.ai/code).
 
 1. Clone the repo and open it in your terminal
 2. Install Claude Code if you haven't already
