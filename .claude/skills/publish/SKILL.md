@@ -21,6 +21,10 @@ marp decks/<deck-name>/<deck-name>.md --output decks/<deck-name>/<deck-name>.htm
 git add decks/<deck-name>/<deck-name>.html
 ```
 
-3. Commit with message: `Publish <deck-name>`
+3. Add a link to the new deck in `index.html` following the existing format.
 
-4. Push to remote.
+4. Stage `index.html` as well.
+
+5. Commit with message: `Publish <deck-name>`
+
+6. Push to remote.
