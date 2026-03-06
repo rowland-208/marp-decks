@@ -1,6 +1,6 @@
 ---
 name: initial-setup
-description: Walk the user through installing project dependencies (pnpm, uv, marp). Use when the user is setting up the project for the first time.
+description: Use when marp is not installed or a tool fails to run.
 ---
 
 # Initial Setup

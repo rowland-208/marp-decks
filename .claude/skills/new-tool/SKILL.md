@@ -12,7 +12,7 @@ description: Create a new tool in the tools/ directory. Use this when the user a
 
 ## Claude skills
 
-Keep the skill simple and extremely brief, typically just one example. The tool name should match the skill name. Use `uv run` in code snippets to encourage uv usage.
+Keep the skill simple and brief. The tool name should match the skill name. Use `uv run` in code snippets to encourage uv usage. Check existing skills for consistency.
 
 ## Package management
 
