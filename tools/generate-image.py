@@ -57,19 +57,33 @@ def generate_image(prompt: str, output_path: str) -> None:
         body = e.read().decode()
         raise click.ClickException(f"API error ({e.code}): {body}")
 
-    content_parts = result["choices"][0]["message"]["content"]
-    if isinstance(content_parts, str):
-        raise click.ClickException(
-            f"Model returned text instead of an image. Try refining your prompt.\nResponse: {content_parts}"
-        )
-
+    message = result["choices"][0]["message"]
     image_data = None
-    for part in content_parts:
-        if part.get("type") == "image_url":
-            data_url = part["image_url"]["url"]
-            _, encoded = data_url.split(",", 1)
-            image_data = base64.b64decode(encoded)
-            break
+
+    # Check for images in the 'images' field (OpenRouter/Gemini format)
+    images = message.get("images", [])
+    if images:
+        for img in images:
+            if isinstance(img, dict) and img.get("type") == "image_url":
+                data_url = img["image_url"]["url"]
+                _, encoded = data_url.split(",", 1)
+                image_data = base64.b64decode(encoded)
+                break
+
+    # Fallback: check content parts for inline image data
+    if not image_data:
+        content_parts = message.get("content")
+        if isinstance(content_parts, str):
+            raise click.ClickException(
+                f"Model returned text instead of an image. Try refining your prompt.\nResponse: {content_parts}"
+            )
+        if content_parts:
+            for part in content_parts:
+                if part.get("type") == "image_url":
+                    data_url = part["image_url"]["url"]
+                    _, encoded = data_url.split(",", 1)
+                    image_data = base64.b64decode(encoded)
+                    break
 
     if not image_data:
         raise click.ClickException(
