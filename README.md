@@ -2,9 +2,7 @@
 
 Presentation slide decks built with marp and claude code.
 
-## Examples
-
-Examples generated with the marp-decks repo and served using github pages. Follow the getting started steps to reproduce this result.
+Examples were generated with the marp-decks repo and served using github pages. Follow the getting started steps to reproduce this result.
 
 [https://rowland-208.github.io/marp-decks/](https://rowland-208.github.io/marp-decks/)
 
