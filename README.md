@@ -1,6 +1,6 @@
 # Marp-Decks
 
-Collection of claude skills to build better slide decks with marp.
+Marp-Decks is a collection of claude skills to build better slide decks with marp.
 
 Check out these example decks, built with marp-decks and hosted on github pages:
 
@@ -15,7 +15,7 @@ Check out these example decks, built with marp-decks and hosted on github pages:
 
 ## Suggested Workflow
 
-1. Ask Claude to create a new deck (e.g. "create a deck about laser cutters")
-2. Open the `file://` link Claude provides in your browser and go full screen
-3. Alt-tab between your terminal and browser to iterate on your slides
+1. Ask Claude to create a new deck
+2. Open the `file://` link Claude provides to view changes live
+3. Alt-tab between your terminal and browser as you iterate on slides
 4. Use the `/publish` slash command to publish your deck to github pages
