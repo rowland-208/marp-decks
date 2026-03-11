@@ -1,0 +1,1732 @@
+
+ ▐▛███▜▌   Claude Code v2.1.70
+▝▜█████▛▘  Opus 4.6 · Claude Pro
+  ▘▘ ▝▝    ~/repos/marp-decks
+
+❯ Let's work on the ai agents deck 
+
+● Read 1 file (ctrl+o to expand)
+
+● Bash(marp --watch decks/cfmg-ai-agents/cfmg-ai-agents.md --output
+      decks/cfmg-ai-agents/cfmg-ai-agents.html 2>&1 &)
+  ⎿  (No output)
+
+● The deck is rendering with live preview. Here's the link:
+
+  file:///home/spacetracks/repos/marp-decks/decks/cfmg-ai-agents/cfmg-ai-agents.
+  html
+
+  The deck has 10 slides covering:
+  1. Title — Agentic AI with Claude Code and Open Claw
+  2. What is an AI Agent?
+  3. The Agent Loop
+  4. Tools Are the Superpower
+  5. Claude Code
+  6. How Claude Code Works
+  7. Open Claw
+  8. What Can You Build?
+  9. Live Demo
+  10. Try It Yourself
+  11. Key Takeaways
+  12. Questions?
+
+  What would you like to change?
+
+❯ I want to work on it one slide at a time. Keep the title slide. Slide 2   
+  "LLMs and the pretraining miracle" I want to emphasize the impact of      
+  pre-training. I want to criticize the "its just a parrot" ideology. I     
+  want to emphasize the impact of regularization, e.g., compression =       
+  learning. And I want to emphasize the fact that no labels are needed      
+  which enables massive scaling. To train a model with N parameters you     
+  need much more then N data to prevent overfitting.                        
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 11 lines, removed 120 lines
+       12  
+       13  ---
+       14  
+       15 -# What is an AI Agent?                                        
+       15 +# LLMs and the Pretraining Miracle                            
+       16  
+       17 -A model that doesn't just respond — it **acts**               
+       17 +**"It's just a parrot"** — not quite.                         
+       18  
+       19 -- Receives a goal, not just a prompt                          
+       20 -- Plans a sequence of steps                                   
+       21 -- Uses **tools** to interact with the world                   
+       22 -- Observes results and adjusts                                
+       19 +- Predict the next token on **trillions** of words from the in
+          +ternet                                                        
+       20 +- No labels needed — the text **is** the training signal      
+       21 +- No labeling bottleneck → scale to massive datasets cheaply  
+       22  
+       24 -> "Give an AI a hammer and it will try to use it"             
+       25 -                                                              
+       23  ---
+       24  
+       28 -# The Agent Loop                                              
+       25 +# Compression = Learning                                      
+       26  
+       30 -```                                                           
+       31 -┌─────────────────────────────────┐                           
+       32 -│  Goal / Task                    │                           
+       33 -└────────────────┬────────────────┘                           
+       34 -                 ↓                                            
+       35 -          [ Think / Plan ]                                    
+       36 -                 ↓                                            
+       37 -          [ Use a Tool   ]  ← read files, run code,           
+       38 -                 ↓             search the web, call APIs      
+       39 -          [ Observe Result ]                                  
+       40 -                 ↓                                            
+       41 -         Done? ──→ Yes: respond                               
+       42 -           ↓                                                  
+       43 -           No: loop back                                      
+       44 -```                                                           
+       27 +A model with **N** parameters trained on **≫ N** tokens can't 
+          +memorize — it **must** compress                               
+       28  
+       46 ----                                                           
+       29 +- Forced to find patterns, structure, and abstractions        
+       30 +- Regularization through sheer data pressure                  
+       31 +- This is why scaling works: more data + more parameters → dee
+          +per understanding                                             
+       32  
+       48 -# Tools Are the Superpower                                    
+       33 +> A parrot memorizes. A model that compresses **generalizes**.
+       34  
+       50 -| Tool | What it does |                                       
+       51 -|------|-------------|                                        
+       52 -| Read / Write files | Access the codebase |                  
+       53 -| Run shell commands | Execute code, tests |                  
+       54 -| Web search / fetch | Get current info |                     
+       55 -| Call APIs | Talk to external systems |                      
+       56 -                                                              
+       57 -An agent with the right tools can do in seconds what takes hum
+          -ans minutes.                                                  
+       58 -                                                              
+       35  ---
+       36  
+       61 -# Claude Code                                                 
+       62 -                                                              
+       63 -Anthropic's agentic coding assistant — runs in your terminal  
+       64 -                                                              
+       65 -- Reads your entire codebase                                  
+       66 -- Writes, edits, and refactors files                          
+       67 -- Runs tests and fixes failures                               
+       68 -- Searches the web for docs                                   
+       69 -- Asks clarifying questions when needed                       
+       70 -                                                              
+       71 -```bash                                                       
+       72 -claude "add input validation to the login form"               
+       73 -```                                                           
+       74 -                                                              
+       75 ----                                                           
+       76 -                                                              
+       77 -# How Claude Code Works                                       
+       78 -                                                              
+       79 -1. You describe a task in plain English                       
+       80 -2. It explores your repo (reads files, searches)              
+       81 -3. It makes a plan                                            
+       82 -4. It executes — editing files, running commands              
+       83 -5. It shows you what changed                                  
+       84 -                                                              
+       85 -All steps visible. You approve risky actions.                 
+       86 -                                                              
+       87 ----                                                           
+       88 -                                                              
+       89 -# Open Claw                                                   
+       90 -                                                              
+       91 -An **open-source** Claude Code-compatible client              
+       92 -                                                              
+       93 -- Same tool protocol, your own front end                      
+       94 -- Runs locally — full control over data                       
+       95 -- Extensible: add custom tools, integrations                  
+       96 -- Great for makers: hack it, extend it, embed it              
+       97 -                                                              
+       98 ----                                                           
+       99 -                                                              
+      100 -# What Can You Build?                                         
+      101 -                                                              
+      102 -- **Coding assistants** tailored to your stack                
+      103 -- **Home automation agents** (read sensors, trigger actions)  
+      104 -- **Document pipelines** (ingest, summarize, file)            
+      105 -- **Repair shop helpers** (diagnose from symptoms)            
+      106 -- **Anything with a clear goal + tools**                      
+      107 -                                                              
+      108 -The pattern is always the same: goal → tools → loop           
+      109 -                                                              
+      110 ----                                                           
+      111 -                                                              
+      112 -# Live Demo                                                   
+      113 -                                                              
+      114 -- Ask Claude Code to add a feature to a small project         
+      115 -- Watch the agent loop in action                              
+      116 -- See tool calls, observations, and edits live                
+      117 -                                                              
+      118 ----                                                           
+      119 -                                                              
+      120 -# Try It Yourself                                             
+      121 -                                                              
+      122 -**Claude Code**                                               
+      123 -```bash                                                       
+      124 -npm install -g @anthropic-ai/claude-code                      
+      125 -claude                                                        
+      126 -```                                                           
+      127 -                                                              
+      128 -**Anthropic API**                                             
+      129 -- claude.ai/api — free tier available                         
+      130 -                                                              
+      131 -**Open Claw**                                                 
+      132 -- github.com/open-claw/open-claw                              
+      133 -                                                              
+      134 ----                                                           
+      135 -                                                              
+      136 -# Key Takeaways                                               
+      137 -                                                              
+      138 -1. Agents = LLM + tools + a loop                              
+      139 -2. The tools define what's possible                           
+      140 -3. Claude Code is a polished example you can use today        
+      141 -4. Open Claw lets you go deeper and customize                 
+      142 -5. Makers are well-positioned — you already think in systems  
+      143 -                                                              
+      144 ----                                                           
+      145 -                                                              
+       37  <!-- _class: lead -->
+       38  
+       39  # Questions?
+
+● Here's what slide 2 looks like now — it's actually split into two slides:
+
+  Slide 2: "LLMs and the Pretraining Miracle"
+  - Challenges the "just a parrot" dismissal
+  - Explains next-token prediction on trillions of words
+  - Highlights that no labels are needed, enabling massive scaling
+
+  Slide 3: "Compression = Learning"
+  - N parameters trained on ≫ N tokens forces compression, not memorization
+  - Regularization through data pressure drives real generalization
+  - Closes with: "A parrot memorizes. A model that compresses generalizes."
+
+  I removed the later slides for now so we can build them back one at a time.
+  The live preview should update — take a look and let me know what you'd like
+  to adjust or what slide 3 should be.
+
+❯ Awesome. On slide 4 I want to emphasize the rise of chatgpt. What enabled 
+   this was RLHF. Raw pre-trained models know a lot about the world but go  
+  off the rails easily                                                      
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 15 lines
+      34  
+      35  ---
+      36  
+      37 +# The ChatGPT Moment                                           
+      38 +                                                               
+      39 +Pretrained models know a lot — but they're **unpredictable**   
+      40 +                                                               
+      41 +- Raw models ramble, contradict, hallucinate, and ignore instru
+         +ctions                                                         
+      42 +- Brilliant but unruly — like a genius with no social skills   
+      43 +                                                               
+      44 +**RLHF** (Reinforcement Learning from Human Feedback) changed e
+         +verything                                                      
+      45 +                                                               
+      46 +- Humans rate outputs → model learns what "helpful" looks like 
+      47 +- Aligns the raw capability to **follow instructions** and **be
+         + useful**                                                      
+      48 +- This is what turned a research artifact into a product billio
+         +ns use                                                         
+      49 +                                                               
+      50 +---                                                            
+      51 +                                                               
+      52  <!-- _class: lead -->
+      53  
+      54  # Questions?
+
+● Slide 4: "The ChatGPT Moment"
+  - Raw pretrained models are capable but go off the rails easily
+  - RLHF is the key innovation — humans rate outputs, model learns to be helpful
+  - This alignment step is what turned a research curiosity into ChatGPT
+
+  Check the preview and let me know what to tweak, or what slide 5 should cover.
+
+❯ On slide 5 I want to introduce thinking models as the next breakthrough.  
+  Models reinforced based on final output not contents of thinking blocks   
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 16 lines
+      49  
+      50  ---
+      51  
+      52 +# Thinking Models                                              
+      53 +                                                               
+      54 +The next breakthrough: **let the model reason before answering*
+         +*                                                              
+      55 +                                                               
+      56 +- Model gets a hidden scratchpad — a "thinking block"          
+      57 +- Reinforcement is based on the **final answer**, not the think
+         +ing                                                            
+      58 +- The model discovers its own reasoning strategies             
+      59 +                                                               
+      60 +Why this matters:                                              
+      61 +                                                               
+      62 +- No one teaches it **how** to think — only **what's correct** 
+      63 +- It learns to plan, backtrack, and self-correct on its own    
+      64 +- Unlocks performance on math, code, and complex multi-step pro
+         +blems                                                          
+      65 +                                                               
+      66 +---                                                            
+      67 +                                                               
+      68  <!-- _class: lead -->
+      69  
+      70  # Questions?
+
+● Slide 5: "Thinking Models"
+  - Hidden scratchpad for reasoning before answering
+  - Reinforcement only on the final output — the model discovers its own
+  reasoning strategies
+  - Nobody teaches it how to think, just what's correct
+  - Unlocks hard problems: math, code, multi-step reasoning
+
+  Check the preview — what's next for slide 6?
+
+❯ Next add tools. This is essential for interacting with the real world.    
+  The model has to be able to try things and get feedback from the world.   
+  Tool use isn't magic it's just the model asking to use a tool, we         
+  intercept it and give it the answer. Training for tool use during         
+  thinking blocks                                                           
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 16 lines
+      65  
+      66  ---
+      67  
+      68 +# Tool Use                                                     
+      69 +                                                               
+      70 +Models can't interact with the real world on their own — **tool
+         +s fix that**                                                   
+      71 +                                                               
+      72 +How it actually works (no magic):                              
+      73 +                                                               
+      74 +1. Model outputs "I want to call `search('weather NYC')`"      
+      75 +2. We intercept that, run the tool, return the result          
+      76 +3. Model continues with the new information                    
+      77 +                                                               
+      78 +- Try things, get feedback, adjust — just like humans          
+      79 +- Trained during thinking blocks so the model learns **when** a
+         +nd **how** to reach for tools                                  
+      80 +- Read files, run code, search the web, call APIs — anything yo
+         +u wire up                                                      
+      81 +                                                               
+      82 +---                                                            
+      83 +                                                               
+      84  <!-- _class: lead -->
+      85  
+      86  # Questions?
+
+● Slide 6: "Tool Use"
+  - Demystifies tool use — model asks, we intercept, return the result
+  - Enables real-world interaction: try things, get feedback, adjust
+  - Tool use trained during thinking blocks so the model learns when to reach
+  for tools
+  - Anything you wire up becomes a capability
+
+  How's it looking? Ready for slide 7?
+
+❯ For slide 7 talk about persistenc. Agents are more persitent than humans  
+  but need a good exit criteria. The more explicit you can be about what    
+  done looks like the longer the model can work and iterate. Context        
+  management is import for long running tasks. That introduces skills and   
+  subagents to manage context.                                              
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 17 lines
+       81  
+       82  ---
+       83  
+       84 +# Persistence                                                 
+       85 +                                                              
+       86 +Agents are **more persistent than humans** — they don't get bo
+          +red or frustrated                                             
+       87 +                                                              
+       88 +The catch: they need to know when to **stop**                 
+       89 +                                                              
+       90 +- The more explicit your exit criteria, the longer an agent ca
+          +n work effectively                                            
+       91 +- Vague goals → spinning wheels. Clear "done" → deep iteration
+          +.                                                             
+       92 +                                                              
+       93 +**Context management** matters for long-running tasks         
+       94 +                                                              
+       95 +- Models have finite context windows — fill it up and quality 
+          +degrades                                                      
+       96 +- **Skills**: predefined prompts that inject focused instructi
+          +ons without bloating context                                  
+       97 +- **Subagents**: spin up a child agent for a subtask, get back
+          + a summary, keep the parent lean                              
+       98 +                                                              
+       99 +---                                                           
+      100 +                                                              
+      101  <!-- _class: lead -->
+      102  
+      103  # Questions?
+
+● Slide 7: "Persistence"
+  - Agents are more persistent than humans — no boredom, no frustration
+  - Clear exit criteria let them work longer and iterate deeper
+  - Context management is critical for long tasks
+  - Introduces skills (focused instructions) and subagents (child agents that
+  return summaries) to keep context lean
+
+  What's slide 8?
+
+❯ Include this slide to show how task length over time has been increasing  
+  ⎿  Interrupted · What should Claude do instead?
+
+❯ Include this image I meant to say  
+
+● What's the image? Can you share the file path or drop it in?
+
+❯ It's in downloads you can move it to the deck dir 
+
+● Read 1 file (ctrl+o to expand)
+
+● ai-task-length.jpeg — that's the one.
+
+● Bash(cp ~/Downloads/ai-task-length.jpeg
+      /home/spacetracks/repos/marp-decks/decks/cfmg-ai-agents/)
+  ⎿  Done
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 6 lines
+       98  
+       99  ---
+      100  
+      101 +# Task Length Is Growing                                      
+      102 +                                                              
+      103 +![bg contain](ai-task-length.jpeg)                            
+      104 +                                                              
+      105 +---                                                           
+      106 +                                                              
+      107  <!-- _class: lead -->
+      108  
+      109  # Questions?
+
+● Added slide 8 with the task length image as a full background. Check the
+  preview — want a title overlay or any adjustments?
+
+❯ Update it with the new image in downloads png 
+
+● Read 2 files (ctrl+o to expand)
+
+● Bash(cp ~/Downloads/length-of-tasks-log.png
+      /home/spacetracks/repos/marp-decks/decks/cfmg-ai-agents/)
+  ⎿  Done
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      100  
+      101  # Task Length Is Growing
+      102  
+      103 -![bg contain](ai-task-length.jpeg)                            
+      103 +![bg contain](length-of-tasks-log.png)                        
+      104  
+      105  ---
+      106  
+
+● Swapped in length-of-tasks-log.png. Check the preview — ready for the next
+  slide?
+
+✻ Cooked for 31s
+
+❯ Don't fill the page with it. Title at the top 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      100  
+      101  # Task Length Is Growing
+      102  
+      103 -![bg contain](length-of-tasks-log.png)                        
+      103 +![w:900 center](length-of-tasks-log.png)                      
+      104  
+      105  ---
+      106  
+
+● Now it has the title at the top with the image below, not filling the whole
+  background. Check the preview — need the size adjusted?
+
+❯ Perfect. Ok next slide will be a claude code demo. Install and sign in.   
+  Use of slash commands and skills. Creating and running a pygame game.     
+  Installing dependencies. Step by step                                     
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 15 lines
+      104  
+      105  ---
+      106  
+      107 +# Claude Code Demo                                            
+      108 +                                                              
+      109 +1. Install and sign in                                        
+      110 +   ```bash                                                    
+      111 +   npm install -g @anthropic-ai/claude-code                   
+      112 +   claude                                                     
+      113 +   ```                                                        
+      114 +2. Explore slash commands and skills                          
+      115 +3. Create a pygame game from scratch                          
+      116 +4. Watch it install dependencies automatically                
+      117 +5. Run the game, hit errors, watch it fix them                
+      118 +6. Iterate until it works                                     
+      119 +                                                              
+      120 +---                                                           
+      121 +                                                              
+      122  <!-- _class: lead -->
+      123  
+      124  # Questions?
+
+● Slide 9: "Claude Code Demo" — a step-by-step walkthrough: install, sign in,
+  slash commands/skills, build a pygame game, auto-install deps, iterate on
+  errors.
+
+  What's next?
+
+❯ Use the quickstart link instead of actual install instructions            
+  https://code.claude.com/docs/en/quickstart                                
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 5 lines
+      106  
+      107  # Claude Code Demo
+      108  
+      109 -1. Install and sign in                                        
+      110 -   ```bash                                                    
+      111 -   npm install -g @anthropic-ai/claude-code                   
+      112 -   claude                                                     
+      113 -   ```                                                        
+      109 +1. Install and sign in — code.claude.com/docs/en/quickstart   
+      110  2. Explore slash commands and skills
+      111  3. Create a pygame game from scratch
+      112  4. Watch it install dependencies automatically
+
+● Updated — just the quickstart link now. What's next?
+
+❯ Update the parrot slide to say "its a stochastic parrot" 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -**"It's just a parrot"** — not quite.                          
+      17 +**"It's a stochastic parrot"** — not quite.                    
+      18  
+      19  - Predict the next token on **trillions** of words from the int
+          ernet
+      20  - No labels needed — the text **is** the training signal
+
+● Updated. What's next?
+
+❯ How about "just a stochastic parrot" 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -**"It's a stochastic parrot"** — not quite.                    
+      17 +**"It's just a stochastic parrot"** — not quite.               
+      18  
+      19  - Predict the next token on **trillions** of words from the int
+          ernet
+      20  - No labels needed — the text **is** the training signal
+
+● Done. What's next?
+
+❯ Add stochastic parrot to slide 3 
+
+● Read 1 file (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      30  - Regularization through sheer data pressure
+      31  - This is why scaling works: more data + more parameters → deep
+          er understanding
+      32  
+      33 -> A parrot memorizes. A model that compresses **generalizes**. 
+      33 +> A stochastic parrot memorizes. A model that compresses **gene
+         +ralizes**.                                                     
+      34  
+      35  ---
+      36  
+
+● Done. What's next?
+
+❯ After each breakthrough give an example of what the text input to the     
+  model looks like, e.g., pretrained text input is just raw text. RLHF      
+  input uses the chat template. Thinking introduces thinking tokens. Tools  
+  introduce tool tokens. Give the examples in quote blocks monospace        
+
+● Read 1 file (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      20  - No labels needed — the text **is** the training signal
+      21  - No labeling bottleneck → scale to massive datasets cheaply
+      22  
+      23 +> `The quick brown fox jumps over the lazy dog. The`           
+      24 +                                                               
+      25  ---
+      26  
+      27  # Compression = Learning
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      49  - Aligns the raw capability to **follow instructions** and **be
+           useful**
+      50  - This is what turned a research artifact into a product billio
+          ns use
+      51  
+      52 +> `[USER] What is the capital of France? [ASSISTANT] The capita
+         +l of France is Paris.`                                         
+      53 +                                                               
+      54  ---
+      55  
+      56  # Thinking Models
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      67  - It learns to plan, backtrack, and self-correct on its own
+      68  - Unlocks performance on math, code, and complex multi-step pro
+          blems
+      69  
+      70 +> `[USER] What is 37×53? [THINKING] Let me work this out... 37×
+         +50=1850, 37×3=111, so 1850+111=1961 [/THINKING] [ASSISTANT] 196
+         +1`                                                             
+      71 +                                                               
+      72  ---
+      73  
+      74  # Tool Use
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      85  - Trained during thinking blocks so the model learns **when** a
+          nd **how** to reach for tools
+      86  - Read files, run code, search the web, call APIs — anything yo
+          u wire up
+      87  
+      88 +> `[THINKING] I need the weather... [TOOL_USE] search("weather 
+         +NYC") [TOOL_RESULT] 72°F, sunny [/THINKING] [ASSISTANT] It's 72
+         +°F and sunny in NYC.`                                          
+      89 +                                                               
+      90  ---
+      91  
+      92  # Persistence
+
+● Added examples after each breakthrough:
+
+  - Pretraining: raw text, predict the next token
+  - RLHF: [USER] / [ASSISTANT] chat template
+  - Thinking: [THINKING] blocks with reasoning before answering
+  - Tools: [TOOL_USE] / [TOOL_RESULT] tokens inside thinking
+
+  Check the preview — the long tool example might need tweaking if it wraps
+  awkwardly.
+
+✻ Cogitated for 33s
+
+❯ Put those examples on a new slide after the current slide 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 4 lines
+      20  - No labels needed — the text **is** the training signal
+      21  - No labeling bottleneck → scale to massive datasets cheaply
+      22  
+      23 +---                                                            
+      24 +                                                               
+      25 +# Pretraining Input                                            
+      26 +                                                               
+      27  > `The quick brown fox jumps over the lazy dog. The`
+      28  
+      29  ---
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 4 lines
+      53  - Aligns the raw capability to **follow instructions** and **be
+           useful**
+      54  - This is what turned a research artifact into a product billio
+          ns use
+      55  
+      56 +---                                                            
+      57 +                                                               
+      58 +# RLHF Input                                                   
+      59 +                                                               
+      60  > `[USER] What is the capital of France? [ASSISTANT] The capita
+          l of France is Paris.`
+      61  
+      62  ---
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 4 lines
+      75  - It learns to plan, backtrack, and self-correct on its own
+      76  - Unlocks performance on math, code, and complex multi-step pro
+          blems
+      77  
+      78 +---                                                            
+      79 +                                                               
+      80 +# Thinking Input                                               
+      81 +                                                               
+      82  > `[USER] What is 37×53? [THINKING] Let me work this out... 37×
+          50=1850, 37×3=111, so 1850+111=1961 [/THINKING] [ASSISTANT] 196
+          1`
+      83  
+      84  ---
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 4 lines
+       97  - Trained during thinking blocks so the model learns **when** 
+           and **how** to reach for tools
+       98  - Read files, run code, search the web, call APIs — anything y
+           ou wire up
+       99  
+      100 +---                                                           
+      101 +                                                              
+      102 +# Tool Use Input                                              
+      103 +                                                              
+      104  > `[THINKING] I need the weather... [TOOL_USE] search("weather
+            NYC") [TOOL_RESULT] 72°F, sunny [/THINKING] [ASSISTANT] It's 
+           72°F and sunny in NYC.`
+      105  
+      106  ---
+
+● Done — each example is now on its own slide right after the corresponding
+  breakthrough. Check the preview and let me know how it looks.
+
+❯ CFMG website is https://www.capefearmakersguild.org/ 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      145  
+      146  Cape Fear Makers Guild — March 2026
+      147  
+      148 -cfmg.io                                                       
+      148 +capefearmakersguild.org                                       
+
+● Updated. What's next?
+
+❯ The date is Apr 7th 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      143  
+      144  # Questions?
+      145  
+      146 -Cape Fear Makers Guild — March 2026                           
+      146 +Cape Fear Makers Guild — April 7, 2026                        
+      147  
+      148  capefearmakersguild.org
+
+● Done. What's next?
+
+❯ Generate an image of a parrot on a white background and add it to the     
+  stochastic parrot slide                                                   
+
+● Skill(generate-image)
+  ⎿  Successfully loaded skill
+
+● Bash(uv run tools/generate-image.py decks/cfmg-ai-agents/parrot.png "A
+      colorful parrot on a plain white background, digital illustration style,
+      clean and simple")
+  ⎿  Generating image with google/gemini-3.1-flash-image-preview...
+     Saved image to decks/cfmg-ai-agents/parrot.png
+  ⎿  (timeout 1m)
+
+● Read 1 file (ctrl+o to expand)
+
+● Nice parrot. Now let me add it to the stochastic parrot slide.
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 +![bg right:30%](parrot.png)                                    
+      18 +                                                               
+      19  **"It's just a stochastic parrot"** — not quite.
+      20  
+      21  - Predict the next token on **trillions** of words from the int
+          ernet
+
+● Added the parrot image to the right side of the stochastic parrot slide. Check
+   the preview — want to adjust the size or placement?
+
+✻ Churned for 48s
+
+❯ Flip it horizontally 
+
+● Bash(convert decks/cfmg-ai-agents/parrot.png -flop
+      decks/cfmg-ai-agents/parrot.png)
+  ⎿  Tool use rejected with user message: can't you do that in marp markdown?
+
+● Marp doesn't have a built-in way to flip images in markdown. But I can use an
+  inline <style> to flip it via CSS. Let me use a different approach — apply a
+  CSS filter to that specific slide.
+
+● Read 1 file (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      12  
+      13  ---
+      14  
+      15 +<style scoped>section::after { content: ''; } img[alt~="bg"] { 
+         +transform: scaleX(-1); }</style>                               
+      16 +                                                               
+      17  # LLMs and the Pretraining Miracle
+      18  
+      19  ![bg right:30%](parrot.png)
+
+● Added a scoped CSS style to flip the parrot horizontally on that slide. Check
+  the preview — if Marp doesn't pick up the img[alt~="bg"] selector, I may need
+  to use ImageMagick instead.
+
+❯ Didnt work. Undo that and flip the image itself 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Removed 2 lines
+      12  
+      13  ---
+      14  
+      15 -<style scoped>section::after { content: ''; } img[alt~="bg"] { 
+         -transform: scaleX(-1); }</style>                               
+      16 -                                                               
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17  ![bg right:30%](parrot.png)
+
+● Bash(convert decks/cfmg-ai-agents/parrot.png -flop
+      decks/cfmg-ai-agents/parrot.png)
+  ⎿  (No output)
+
+● Flipped. Check the preview — what's next?
+
+❯ Cool that worked. The left side of the parrot is getting clipped too much 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -![bg right:30%](parrot.png)                                    
+      17 +![bg right:40%](parrot.png)                                    
+      18  
+      19  **"It's just a stochastic parrot"** — not quite.
+      20  
+
+● Widened the right panel from 30% to 40%. Check the preview — need more or
+  less?
+
+❯ Shift it to the right a bit 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -![bg right:40%](parrot.png)                                    
+      17 +![bg right:40% 120%](parrot.png)                               
+      18  
+      19  **"It's just a stochastic parrot"** — not quite.
+      20  
+
+● Hmm, that may not do what we want. Let me try a different approach — adding
+  padding to the image itself.
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -![bg right:40% 120%](parrot.png)                               
+      17 +![bg right:40% fit](parrot.png)                                
+      18  
+      19  **"It's just a stochastic parrot"** — not quite.
+      20  
+
+● Try that — fit should contain the whole image without clipping. Check the
+  preview and let me know if it needs more adjustment.
+
+❯ Ok yeah it worked as expected but I do want clippping. I just want the    
+  clipping to happen on the right only                                      
+
+● Bash(convert decks/cfmg-ai-agents/parrot.png -gravity east -extent $(identify
+      -format "%[fx:w+200]x%h" decks/cfmg-ai-agents/parrot.png)
+      decks/cfmg-ai-agents/parrot.p…)
+  ⎿  (No output)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -![bg right:40% fit](parrot.png)                                
+      17 +![bg right:40%](parrot.png)                                    
+      18  
+      19  **"It's just a stochastic parrot"** — not quite.
+      20  
+
+● Added padding to the left of the image so the parrot shifts right — now
+  clipping should happen on the right side instead. Check the preview — need
+  more or less shift?
+
+❯ Perfect now you could set it back to 30% 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      14  
+      15  # LLMs and the Pretraining Miracle
+      16  
+      17 -![bg right:40%](parrot.png)                                    
+      17 +![bg right:30%](parrot.png)                                    
+      18  
+      19  **"It's just a stochastic parrot"** — not quite.
+      20  
+
+● Done. How's it looking?
+
+❯ In the pretraining text example stop at lazy to emphasize the fact that   
+  we can predict the next token                                             
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      26  
+      27  # Pretraining Input
+      28  
+      29 -> `The quick brown fox jumps over the lazy dog. The`           
+      29 +> `The quick brown fox jumps over the lazy ___`                
+      30  
+      31  ---
+      32  
+
+● Done — now it ends at "the lazy ___" to highlight next-token prediction.
+  What's next?
+
+❯ Remove the __ 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      26  
+      27  # Pretraining Input
+      28  
+      29 -> `The quick brown fox jumps over the lazy ___`                
+      29 +> `The quick brown fox jumps over the lazy`                    
+      30  
+      31  ---
+      32  
+
+● Done. What's next?
+
+❯ This is why scaling works: more parameters + a lot more data -> deeper    
+  understanding                                                             
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      36  
+      37  - Forced to find patterns, structure, and abstractions
+      38  - Regularization through sheer data pressure
+      39 -- This is why scaling works: more data + more parameters → deep
+         -er understanding                                               
+      39 +- This is why scaling works: more parameters + a lot more data 
+         +→ deeper understanding                                         
+      40  
+      41  > A stochastic parrot memorizes. A model that compresses **gene
+          ralizes**.
+      42  
+
+● Done. What's next?
+
+❯ Put end tags for all of the token examples 
+
+● Searched for 1 pattern (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      59  
+      60  # RLHF Input
+      61  
+      62 -> `[USER] What is the capital of France? [ASSISTANT] The capita
+         -l of France is Paris.`                                         
+      62 +> `[USER] What is the capital of France? [/USER] [ASSISTANT] Th
+         +e capital of France is Paris. [/ASSISTANT]`                    
+      63  
+      64  ---
+      65  
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      81  
+      82  # Thinking Input
+      83  
+      84 -> `[USER] What is 37×53? [THINKING] Let me work this out... 37×
+         -50=1850, 37×3=111, so 1850+111=1961 [/THINKING] [ASSISTANT] 196
+         -1`                                                             
+      84 +> `[USER] What is 37×53? [/USER] [THINKING] Let me work this ou
+         +t... 37×50=1850, 37×3=111, so 1850+111=1961 [/THINKING] [ASSIST
+         +ANT] 1961 [/ASSISTANT]`                                        
+      85  
+      86  ---
+      87  
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      103  
+      104  # Tool Use Input
+      105  
+      106 -> `[THINKING] I need the weather... [TOOL_USE] search("weather
+          - NYC") [TOOL_RESULT] 72°F, sunny [/THINKING] [ASSISTANT] It's 
+          -72°F and sunny in NYC.`                                       
+      106 +> `[THINKING] I need the weather... [TOOL_USE] search("weather
+          + NYC") [/TOOL_USE] [TOOL_RESULT] 72°F, sunny [/TOOL_RESULT] [/
+          +THINKING] [ASSISTANT] It's 72°F and sunny in NYC. [/ASSISTANT]
+          +`                                                             
+      107  
+      108  ---
+      109  
+
+● Done — added closing tags to all token examples. What's next?
+
+❯ Expand the tool use example to include the use question 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      103  
+      104  # Tool Use Input
+      105  
+      106 -> `[THINKING] I need the weather... [TOOL_USE] search("weather
+          - NYC") [/TOOL_USE] [TOOL_RESULT] 72°F, sunny [/TOOL_RESULT] [/
+          -THINKING] [ASSISTANT] It's 72°F and sunny in NYC. [/ASSISTANT]
+          -`                                                             
+      106 +> `[USER] What's the weather in NYC? [/USER] [THINKING] I need
+          + the weather... [TOOL_USE] search("weather NYC") [/TOOL_USE] [
+          +TOOL_RESULT] 72°F, sunny [/TOOL_RESULT] [/THINKING] [ASSISTANT
+          +] It's 72°F and sunny in NYC. [/ASSISTANT]`                   
+      107  
+      108  ---
+      109  
+
+● Done. What's next?
+
+❯ Remove the ... from that example since it's complete 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      103  
+      104  # Tool Use Input
+      105  
+      106 -> `[USER] What's the weather in NYC? [/USER] [THINKING] I need
+          - the weather... [TOOL_USE] search("weather NYC") [/TOOL_USE] [
+          -TOOL_RESULT] 72°F, sunny [/TOOL_RESULT] [/THINKING] [ASSISTANT
+          -] It's 72°F and sunny in NYC. [/ASSISTANT]`                   
+      106 +> `[USER] What's the weather in NYC? [/USER] [THINKING] I need
+          + the weather [TOOL_USE] search("weather NYC") [/TOOL_USE] [TOO
+          +L_RESULT] 72°F, sunny [/TOOL_RESULT] [/THINKING] [ASSISTANT] I
+          +t's 72°F and sunny in NYC. [/ASSISTANT]`                      
+      107  
+      108  ---
+      109  
+
+● Done. What's next?
+
+❯ The claude quickstart link needs https and a link format 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      132  
+      133  # Claude Code Demo
+      134  
+      135 -1. Install and sign in — code.claude.com/docs/en/quickstart   
+      135 +1. Install and sign in — [quickstart](https://code.claude.com/
+          +docs/en/quickstart)                                           
+      136  2. Explore slash commands and skills
+      137  3. Create a pygame game from scratch
+      138  4. Watch it install dependencies automatically
+
+● Done. What's next?
+
+❯ Make the link text match the link 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      132  
+      133  # Claude Code Demo
+      134  
+      135 -1. Install and sign in — [quickstart](https://code.claude.com/
+          -docs/en/quickstart)                                           
+      135 +1. Install and sign in — [code.claude.com/docs/en/quickstart](
+          +https://code.claude.com/docs/en/quickstart)                   
+      136  2. Explore slash commands and skills
+      137  3. Create a pygame game from scratch
+      138  4. Watch it install dependencies automatically
+
+● Done. What's next?
+
+❯ Add a slide emphasizing if a tool can be expressed as a cli agents can    
+  figure out how to use it                                                  
+
+● Read 1 file (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 12 lines
+      101  
+      102  ---
+      103  
+      104 +# If It's a CLI, It's a Tool                                  
+      105 +                                                              
+      106 +Agents already know how to use a terminal                     
+      107 +                                                              
+      108 +- If your tool has a command-line interface, an agent can figu
+          +re out how to use it                                          
+      109 +- `--help`, man pages, error messages — all feedback the agent
+          + can learn from                                               
+      110 +- No special integration needed — just give it shell access   
+      111 +                                                              
+      112 +Examples: `git`, `docker`, `ffmpeg`, `curl`, `python`, package
+          + managers, your own scripts                                   
+      113 +                                                              
+      114 +---                                                           
+      115 +                                                              
+      116  # Tool Use Input
+      117  
+      118  > `[USER] What's the weather in NYC? [/USER] [THINKING] I need
+            the weather [TOOL_USE] search("weather NYC") [/TOOL_USE] [TOO
+           L_RESULT] 72°F, sunny [/TOOL_RESULT] [/THINKING] [ASSISTANT] I
+           t's 72°F and sunny in NYC. [/ASSISTANT]`
+
+● Added a slide after Tool Use emphasizing that any CLI tool is automatically an
+   agent tool. What's next?
+
+❯ Distinguish between classic and modern examples. The examples you gave    
+  are classic. Modern examples are discord, github, google workspace.       
+  Modern cli tools let you interact with just about anything on the web     
+  without having to navigate with a browser. Agents can handle browser      
+  navigation too through image input but it's wasteful                      
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 5 lines, removed 1 line
+      109  - `--help`, man pages, error messages — all feedback the agent
+            can learn from
+      110  - No special integration needed — just give it shell access
+      111  
+      112 -Examples: `git`, `docker`, `ffmpeg`, `curl`, `python`, package
+          - managers, your own scripts                                   
+      112 +**Classic**: `git`, `docker`, `ffmpeg`, `curl`, `python`, pack
+          +age managers                                                  
+      113  
+      114 +**Modern**: `gh` (GitHub), `gcloud`, `discord`, Google Workspa
+          +ce CLIs — interact with the web without a browser             
+      115 +                                                              
+      116 +Agents *can* navigate browsers through image input, but it's w
+          +asteful — CLIs are faster, cheaper, and more reliable         
+      117 +                                                              
+      118  ---
+      119  
+      120  # Tool Use Input
+
+● Updated with classic vs modern CLI examples, and the point that browser
+  navigation works but CLIs are the better path. What's next?
+
+❯ The google cli is gws. Don't need to define those I'll do it in speaking 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      111  
+      112  **Classic**: `git`, `docker`, `ffmpeg`, `curl`, `python`, pack
+           age managers
+      113  
+      114 -**Modern**: `gh` (GitHub), `gcloud`, `discord`, Google Workspa
+          -ce CLIs — interact with the web without a browser             
+      114 +**Modern**: `gh`, `gcloud`, `discord`, `gws` — interact with t
+          +he web without a browser                                      
+      115  
+      116  Agents *can* navigate browsers through image input, but it's w
+           asteful — CLIs are faster, cheaper, and more reliable
+      117  
+
+● Done. What's next?
+
+❯ faster, more reliable, and token efficient "cheaper" 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      113  
+      114  **Modern**: `gh`, `gcloud`, `discord`, `gws` — interact with t
+           he web without a browser
+      115  
+      116 -Agents *can* navigate browsers through image input, but it's w
+          -asteful — CLIs are faster, cheaper, and more reliable         
+      116 +Agents *can* navigate browsers through image input, but CLIs a
+          +re faster, more reliable, and token efficient                 
+      117  
+      118  ---
+      119  
+
+● Done. What's next?
+
+❯ command-line interface -> cli I'll define that in speaking too 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      105  
+      106  Agents already know how to use a terminal
+      107  
+      108 -- If your tool has a command-line interface, an agent can figu
+          -re out how to use it                                          
+      108 +- If your tool has a CLI, an agent can figure out how to use i
+          +t                                                             
+      109  - `--help`, man pages, error messages — all feedback the agent
+            can learn from
+      110  - No special integration needed — just give it shell access
+      111  
+
+● Done. What's next?
+
+❯ Move this slide after the claude code demo 
+
+● Read 1 file (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Removed 16 lines
+      101  
+      102  ---
+      103  
+      104 -# If It's a CLI, It's a Tool                                  
+      105 -                                                              
+      106 -Agents already know how to use a terminal                     
+      107 -                                                              
+      108 -- If your tool has a CLI, an agent can figure out how to use i
+          -t                                                             
+      109 -- `--help`, man pages, error messages — all feedback the agent
+          - can learn from                                               
+      110 -- No special integration needed — just give it shell access   
+      111 -                                                              
+      112 -**Classic**: `git`, `docker`, `ffmpeg`, `curl`, `python`, pack
+          -age managers                                                  
+      113 -                                                              
+      114 -**Modern**: `gh`, `gcloud`, `discord`, `gws` — interact with t
+          -he web without a browser                                      
+      115 -                                                              
+      116 -Agents *can* navigate browsers through image input, but CLIs a
+          -re faster, more reliable, and token efficient                 
+      117 -                                                              
+      118 ----                                                           
+      119 -                                                              
+      104  # Tool Use Input
+      105  
+      106  > `[USER] What's the weather in NYC? [/USER] [THINKING] I need
+            the weather [TOOL_USE] search("weather NYC") [/TOOL_USE] [TOO
+           L_RESULT] 72°F, sunny [/TOOL_RESULT] [/THINKING] [ASSISTANT] I
+           t's 72°F and sunny in NYC. [/ASSISTANT]`
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 16 lines
+      141  
+      142  ---
+      143  
+      144 +# If It's a CLI, It's a Tool                                  
+      145 +                                                              
+      146 +Agents already know how to use a terminal                     
+      147 +                                                              
+      148 +- If your tool has a CLI, an agent can figure out how to use i
+          +t                                                             
+      149 +- `--help`, man pages, error messages — all feedback the agent
+          + can learn from                                               
+      150 +- No special integration needed — just give it shell access   
+      151 +                                                              
+      152 +**Classic**: `git`, `docker`, `ffmpeg`, `curl`, `python`, pack
+          +age managers                                                  
+      153 +                                                              
+      154 +**Modern**: `gh`, `gcloud`, `discord`, `gws` — interact with t
+          +he web without a browser                                      
+      155 +                                                              
+      156 +Agents *can* navigate browsers through image input, but CLIs a
+          +re faster, more reliable, and token efficient                 
+      157 +                                                              
+      158 +---                                                           
+      159 +                                                              
+      160  <!-- _class: lead -->
+      161  
+      162  # Questions?
+
+● Moved "If It's a CLI, It's a Tool" to after the Claude Code Demo slide. What's
+   next?
+
+❯ After that add a slide for open claw demo. Install. Set up with open      
+  router. Configure with web ui.                                            
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 8 lines
+      157  
+      158  ---
+      159  
+      160 +# Open Claw Demo                                              
+      161 +                                                              
+      162 +1. Install Open Claw                                          
+      163 +2. Set up with OpenRouter                                     
+      164 +3. Configure with the web UI                                  
+      165 +                                                              
+      166 +---                                                           
+      167 +                                                              
+      168  <!-- _class: lead -->
+      169  
+      170  # Questions?
+
+● Added the Open Claw Demo slide. What's next?
+
+❯ Lastly add a slide about CFMB our home grown discord bot. Claude code and 
+   open claw are just wrappers around models under the hood. No reason you  
+  can't make your own. https://github.com/rowland-208/cfmb/tree/main/cfmb   
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Error editing file
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 9 lines
+      165  
+      166  ---
+      167  
+      168 +# CFMB — Our Home Grown Discord Bot                           
+      169 +                                                              
+      170 +Claude Code and Open Claw are just wrappers around models — no
+          + reason you can't build your own                              
+      171 +                                                              
+      172 +- Custom agent tailored to our community                      
+      173 +- [github.com/rowland-208/cfmb](https://github.com/rowland-208
+          +/cfmb/tree/main/cfmb)                                         
+      174 +                                                              
+      175 +---                                                           
+      176 +                                                              
+      177  <!-- _class: lead -->
+      178  
+      179  # Questions?
+
+● Added the CFMB slide. What's next?
+
+❯ Open claw quickstart url is                                               
+  https://docs.openclaw.ai/start/getting-started                            
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      159  
+      160  # Open Claw Demo
+      161  
+      162 -1. Install Open Claw                                          
+      162 +1. Install Open Claw — [docs.openclaw.ai/start/getting-started
+          +](https://docs.openclaw.ai/start/getting-started)             
+      163  2. Set up with OpenRouter
+      164  3. Configure with the web UI
+      165  
+
+● Done. What's next?
+
+❯ For compression=learning what are some ideas for visualizations? Let's    
+  talk about it don't generate yet                                          
+
+● Some ideas:
+
+  1. Zip file analogy — show a large folder shrinking into a small zip file,
+  with the label "patterns found" on the compressed version
+  2. Funnel diagram — trillions of tokens pouring into a narrow funnel labeled
+  "N parameters", with "abstractions" coming out the other side
+  3. Sponge vs bucket — a bucket overflowing (memorization/overfitting) vs a
+  sponge that absorbs and compresses (generalization)
+  4. Data >> Parameters visual — a massive stack of books next to a small brain,
+   emphasizing the ratio forces compression
+  5. Decision tree pruning — a messy tangled tree simplifying into clean
+  branches, showing how compression strips noise and keeps structure
+  6. Lossy compression metaphor — like a JPEG: you lose some detail but the
+  image is still recognizable. The model loses specific facts but retains the
+  patterns
+
+  Which direction feels right for the talk?
+
+❯ Let's go with the stack of books and small brain graphic. Let's talk      
+  about what the should look like. The brain should have a neural net vis   
+
+● How about:
+
+  - Left side: a tall stack of books, maybe slightly messy/overflowing,
+  representing the massive training data. Could label it something like
+  "trillions of tokens"
+  - Right side: a compact brain with a visible neural network pattern inside it
+  — nodes and connections, maybe glowing or highlighted to show activity
+  - Between them: an arrow or funnel showing the compression happening
+  - White background to match the deck style
+
+  For the neural net inside the brain:
+  - Keep it simple — 3-4 layers of nodes with connections
+  - Could have the connections vary in thickness to suggest learned weights
+  - Maybe a subtle glow on the stronger connections
+
+  Should the books look realistic or more stylized/illustrative to match the
+  parrot's style?
+
+❯ Stylized for sure. Could you suggest a prompt for that? 
+
+● A few options:
+
+  1. "Stylized digital illustration on white background, a tall messy stack of
+  colorful books on the left with an arrow pointing to a small compact brain on
+  the right, inside the brain is a simple neural network diagram with nodes and
+  connections, clean minimal style"
+  2. "Digital illustration white background, large overflowing pile of books
+  labeled data flowing through a funnel into a small glowing brain containing a
+  neural network with layered nodes and weighted connections, flat illustration
+  style, clean and simple"
+  3. "Minimal digital illustration on white background, a towering stack of
+  books on the left, a small brain on the right with a visible neural network
+  inside showing 3 layers of connected nodes, an arrow connecting them
+  suggesting compression, clean flat style"
+
+  I'd lean toward #3 — it's the most specific about the neural net layers and
+  the cleanest description. We could also add "similar style to a colorful
+  parrot illustration" to keep it consistent with the parrot slide.
+
+  Want me to tweak any of these or go with one?
+
+❯ Go for #3 
+
+● Bash(uv run tools/generate-image.py decks/cfmg-ai-agents/compression.png
+      "Minimal digital illustration on white background, a towering stack of
+      books on the left, a…)
+  ⎿  Generating image with google/gemini-3.1-flash-image-preview...
+     Saved image to decks/cfmg-ai-agents/compression.png
+  ⎿  (timeout 1m)
+
+● Read 1 file (ctrl+o to expand)
+
+● That came out nice — tall stack of books on the left, arrow into a brain with
+  a neural network inside. Want me to add it to the Compression = Learning
+  slide, or would you like to tweak the image first?
+
+✻ Brewed for 47s
+
+❯ New slide after that slide 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 4 lines
+      42  
+      43  ---
+      44  
+      45 +![bg contain](compression.png)                                 
+      46 +                                                               
+      47 +---                                                            
+      48 +                                                               
+      49  # The ChatGPT Moment
+      50  
+      51  Pretrained models know a lot — but they're **unpredictable**
+
+● Added it as a full-page image slide right after Compression = Learning. What's
+   next?
+
+❯ Make it smaller and give it the same title 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 3 lines, removed 1 line
+      42  
+      43  ---
+      44  
+      45 -![bg contain](compression.png)                                 
+      45 +# Compression = Learning                                       
+      46  
+      47 +![w:700 center](compression.png)                               
+      48 +                                                               
+      49  ---
+      50  
+      51  # The ChatGPT Moment
+
+● Done. How's the size?
+
+❯ Centered 
+
+● It should already be centered with the center directive. Let me check how it
+  looks — it might need to be done differently in Marp.
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 3 lines, removed 1 line
+      42  
+      43  ---
+      44  
+      45 +<style scoped>img { display: block; margin: auto; }</style>    
+      46 +                                                               
+      47  # Compression = Learning
+      48  
+      47 -![w:700 center](compression.png)                               
+      49 +![w:700](compression.png)                                      
+      50  
+      51  ---
+      52  
+
+● Try that — should center it properly now. How's it look?
+
+❯ Now I want to create an image to illustrate how tools let the model       
+  interact with the world. Let's discuss                                    
+
+● Some ideas:
+
+  1. Brain with arms — a brain/neural net in the center reaching out with arms
+  to different tools: a terminal, a web browser, a file system, an API
+  2. Hub and spokes — model in the center, spokes radiating out to icons
+  representing different tools (shell, files, web, database), with arrows
+  showing back-and-forth
+  3. Robot at a workbench — a stylized robot/AI sitting at a maker's workbench
+  surrounded by tools (wrench, terminal, magnifying glass), tying into the maker
+   guild audience
+  4. Walled garden breaking out — a brain trapped in a box on one side, then the
+   same brain with tools breaking through the wall to reach the outside world
+  (files, web, APIs)
+  5. Conversation with interruptions — a chat flow where the model pauses
+  mid-response, reaches out to a tool, gets a result back, and continues —
+  visualizing the intercept pattern you described on the slide
+
+  I think #4 could be really powerful for your message — it emphasizes that
+  without tools the model is isolated, and tools are what connect it to the real
+   world. #2 is the safest/clearest option. #3 plays well with the maker guild
+  crowd.
+
+  What direction appeals to you?
+
+❯ I want to emphasize the iterative nature of problem solving 
+
+● Some ideas along that line:
+
+  1. Spiral converging on a target — model in the center, each loop of the
+  spiral passes through a tool call and gets closer to the bullseye, showing
+  iterative refinement
+  2. Trial and error sequence — a series of attempts: model tries something,
+  gets an X/error, adjusts, tries again, gets a checkmark. Like a comic strip
+  left to right showing the loop
+  3. Sculptor chipping away — rough block on the left, progressively more
+  refined shape in each step, with tool icons at each stage. Each pass removes
+  more noise
+  4. Maze with backtracking — model navigating a maze, hitting dead ends,
+  backing up, trying new paths — with tool calls at each decision point
+  providing feedback
+  5. Code-compile-fix loop — write code → run → error → read error → fix → run →
+   success. Very literal and matches the Claude Code demo you're doing
+
+  I think #2 or #3 would make the cleanest visuals. #2 is more literal about
+  iteration, #3 is more metaphorical but memorable. What feels right?
+
+❯ The trial and error comic sounds nice. We're a maker space so showing a   
+  robot trial and error on a project could work. How many panels and what   
+  do you think for each?                                                    
+
+● For a maker space vibe, how about a robot building something physical — like a
+   birdhouse or a small circuit:
+
+  4 panels:
+
+  1. Robot looks at a blueprint — planning phase, the goal
+  2. Robot tries, thing falls apart — first attempt fails, pieces scattered
+  3. Robot examines the broken piece — observing, learning from feedback
+  4. Robot with finished project, triumphant — success after iteration
+
+  4 panels keeps it readable on a slide. 3 feels too quick, 5 would get small.
+
+  The key beats are: plan → fail → learn from feedback → succeed. That mirrors
+  the agent loop exactly — and the audience will relate since they've all had
+  projects fall apart at the makerspace.
+
+  Should the robot look cute/friendly or more mechanical? And any preference on
+  what it's building — birdhouse is simple and universal, but we could do
+  something more maker-y like soldering a PCB or 3D printing.
+
+❯ How about a laser cutter project? 
+
+● Perfect — very on brand for a maker space. 4 panels:
+
+  1. Robot at computer with design file — planning, looking at a cut layout on
+  screen
+  2. Robot runs the laser cutter, piece comes out warped/burned — first attempt
+  fails, scorch marks, wrong dimensions
+  3. Robot holds up the bad piece, examines it, adjusts settings on the laser —
+  learning from the result, tweaking power/speed
+  4. Robot holds up a clean perfect cut piece, looks proud — nailed it
+
+  Want me to take a crack at a prompt for this? We'd want to specify it's a
+  single horizontal comic strip with 4 panels so the image generator keeps them
+  in sequence.
+
+❯ That's great but warping isn't a typical error. It's more like the piece  
+  doesn't look as good on the first try                                     
+
+● Good call. Revised panels:
+
+  1. Robot at computer with design file — planning the cut
+  2. Robot runs the laser cutter, holds up the piece — edges are rough, details 
+  aren't crisp — it works but doesn't look great
+  3. Robot examines the piece, adjusts settings on the laser — tweaking based on
+   the result
+  4. Robot holds up a clean, crisp final piece, looks proud — dialed in
+
+  Want me to generate it?
+
+❯ Let's see your prompt first 
+
+● How about:
+
+  "Horizontal 4-panel comic strip on white background, stylized flat
+  illustration, cute robot character. Panel 1: robot sitting at computer looking
+   at a laser cut design on screen. Panel 2: robot holds up a rough-looking
+  laser cut piece, looks disappointed. Panel 3: robot adjusts settings on the
+  laser cutter machine, examining the piece. Panel 4: robot proudly holds up a
+  perfect crisp laser cut piece. Clean minimal style, consistent character
+  across panels."
+
+❯ Go for it 
+
+● Bash(uv run tools/generate-image.py decks/cfmg-ai-agents/tool-iteration.png
+      "Horizontal 4-panel comic strip on white background, stylized flat
+      illustration, cute rob…)
+  ⎿  Generating image with google/gemini-3.1-flash-image-preview...
+     Saved image to decks/cfmg-ai-agents/tool-iteration.png
+  ⎿  (timeout 1m)
+
+● Read 1 file (ctrl+o to expand)
+
+● That came out pretty well — 4 clear panels with a consistent robot character,
+  laser cutter, and the iteration story. Want to add it to the deck or
+  regenerate with any tweaks?
+
+✻ Sautéed for 30s
+
+❯ Add a new slide after the tools slide 
+
+● Read 1 file (ctrl+o to expand)
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 6 lines
+      109  
+      110  ---
+      111  
+      112 +# Tool Use                                                    
+      113 +                                                              
+      114 +![w:900 center](tool-iteration.png)                           
+      115 +                                                              
+      116 +---                                                           
+      117 +                                                              
+      118  # Tool Use Input
+      119  
+      120  > `[USER] What's the weather in NYC? [/USER] [THINKING] I need
+            the weather [TOOL_USE] search("weather NYC") [/TOOL_USE] [TOO
+           L_RESULT] 72°F, sunny [/TOOL_RESULT] [/THINKING] [ASSISTANT] I
+           t's 72°F and sunny in NYC. [/ASSISTANT]`
+
+● Added it. How's it look?
+
+❯ Finally add the cfmg.png logo to the cfmb slide 
+
+● Read 1 file (ctrl+o to expand)
+
+● Bash(cp ~/Downloads/cfmg.png
+      /home/spacetracks/repos/marp-decks/decks/cfmg-ai-agents/)
+  ⎿  Done
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 2 lines
+      181  
+      182  # CFMB — Our Home Grown Discord Bot
+      183  
+      184 +![bg right:30%](cfmg.png)                                     
+      185 +                                                              
+      186  Claude Code and Open Claw are just wrappers around models — no
+            reason you can't build your own
+      187  
+      188  - Custom agent tailored to our community
+
+● Added the CFMG logo to the right side of the CFMB slide. How's it look?
+
+✻ Sautéed for 1m 5s
+
+❯ /export 
+  ⎿  Export cancelled
+
+❯ Smaller and put it in the top right 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      181  
+      182  # CFMB — Our Home Grown Discord Bot
+      183  
+      184 -![bg right:30%](cfmg.png)                                     
+      184 +![bg right:20% 60%](cfmg.png)                                 
+      185  
+      186  Claude Code and Open Claw are just wrappers around models — no
+            reason you can't build your own
+      187  
+
+● How's that size?
+
+❯ Size looks good but it's in the middle right, not top right 
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 1 line, removed 1 line
+      181  
+      182  # CFMB — Our Home Grown Discord Bot
+      183  
+      184 -![bg right:20% 60%](cfmg.png)                                 
+      184 +![bg right:20% 60% vertical top](cfmg.png)                    
+      185  
+      186  Claude Code and Open Claw are just wrappers around models — no
+            reason you can't build your own
+      187  
+
+● Hmm, that syntax may not work in Marp. Let me try with scoped CSS instead.
+
+● Update(decks/cfmg-ai-agents/cfmg-ai-agents.md)
+  ⎿  Added 3 lines, removed 1 line
+      181  
+      182  # CFMB — Our Home Grown Discord Bot
+      183  
+      184 -![bg right:20% 60% vertical top](cfmg.png)                    
+      184 +<style scoped>section { position: relative; } section img[alt=
+          +"logo"] { position: absolute; top: 30px; right: 30px; width: 1
+          +20px; }</style>                                               
+      185  
+      186 +![logo](cfmg.png)                                             
+      187 +                                                              
+      188  Claude Code and Open Claw are just wrappers around models — no
+            reason you can't build your own
+      189  
+      190  - Custom agent tailored to our community
+
+● Try that — using absolute positioning to pin it to the top right. How's it
+  look?
+
+❯ Perfect thanks! 
+
+● Great! Let me take a look at the final deck.
+
+● Read 1 file (ctrl+o to expand)
+
+● Looking good — 20 slides total:
+
+  1. Title
+  2. LLMs and the Pretraining Miracle (with parrot)
+  3. Pretraining Input
+  4. Compression = Learning
+  5. Compression = Learning (image)
+  6. The ChatGPT Moment
+  7. RLHF Input
+  8. Thinking Models
+  9. Thinking Input
+  10. Tool Use
+  11. Tool Use (comic)
+  12. Tool Use Input
+  13. Persistence
+  14. Task Length Is Growing
+  15. Claude Code Demo
+  16. If It's a CLI, It's a Tool
+  17. Open Claw Demo
+  18. CFMB
+  19. Questions
+
+  Solid deck! Let me know if you want any more changes.
