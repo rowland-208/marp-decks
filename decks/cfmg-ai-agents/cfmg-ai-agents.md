@@ -8,7 +8,9 @@ paginate: true
 
 # Agentic AI with Claude Code and Open Claw
 
+James Rowland
 Cape Fear Makers Guild
+April 7, 2026
 
 ---
 
@@ -157,17 +159,25 @@ The catch: they need to know when to **stop**
 
 # If It's a CLI, It's a Tool
 
-Agents already know how to use a terminal
+Agents know how to use the terminal and can help you install and configure CLIs. Agents are text-first, so CLIs make the most sense.
 
-- If your tool has a CLI, an agent can figure out how to use it
-- `--help`, man pages, error messages — all feedback the agent can learn from
-- No special integration needed — just give it shell access
+**Classic**: `git`, `ffmpeg`, `curl`, `python`, package managers
 
-**Classic**: `git`, `docker`, `ffmpeg`, `curl`, `python`, package managers
-
-**Modern**: `gh`, `gcloud`, `discord`, `gws` — interact with the web without a browser
+**Modern**: `gh`, `discord`, `gws` — interact with the web without a browser
 
 Agents *can* navigate browsers through image input, but CLIs are faster, more reliable, and token efficient
+
+---
+
+<!-- _class: lead -->
+
+# These Slides Were Built by an Agent
+
+LLMs love Markdown — so these slides were built with **Marp**, a Markdown-based slide framework, by **Claude Code** configured with skills for Marp.
+
+The full transcript of the agent session is here:
+
+[github.com/rowland-208/marp-decks](https://github.com/rowland-208/marp-decks/blob/main/decks/cfmg-ai-agents/2026-03-10-230330-lets-work-on-the-ai-agents-deck.txt)
 
 ---
 
@@ -176,6 +186,8 @@ Agents *can* navigate browsers through image input, but CLIs are faster, more re
 1. Install Open Claw — [docs.openclaw.ai/start/getting-started](https://docs.openclaw.ai/start/getting-started)
 2. Set up with OpenRouter
 3. Configure with the web UI
+
+**Warning**: Open Claw is dangerous by default — it runs with minimal safety guardrails out of the box
 
 ---
 
@@ -190,12 +202,3 @@ Claude Code and Open Claw are just wrappers around models — no reason you can'
 - Custom agent tailored to our community
 - [github.com/rowland-208/cfmb](https://github.com/rowland-208/cfmb/tree/main/cfmb)
 
----
-
-<!-- _class: lead -->
-
-# Questions?
-
-Cape Fear Makers Guild — April 7, 2026
-
-capefearmakersguild.org
