@@ -25,6 +25,7 @@ marp --watch deck.md
 
 Each deck gets a directory. The directory and markdown slide share the same name. Deck directories contain additional images and content referenced by the deck. 
 
+```
 root/
 -- decks/
 ---- cfmg-ai-agents/
@@ -39,6 +40,7 @@ root/
 ------ SKILL.md
 ------ generate-image.py
 ------ requirements.txt
+```
 
 ## Tools
 
