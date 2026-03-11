@@ -8,9 +8,9 @@ Check out these example decks, built with marp-decks and hosted on github pages:
 
 ## Getting Started
 
-1. `git clone https://github.com/rowland-208/marp-decks.git && cd marp-decks`
+1. `$ git clone https://github.com/rowland-208/marp-decks.git && cd marp-decks`
 2. [Install Claude Code](https://code.claude.com/docs/en/quickstart)
-3. Run `claude` and start building
+3. `$ claude 'create a slide deck about whales'`
 4. (Optional) Fork this repo and enable github pages to view your published decks online
 
 ## Suggested Workflow
