@@ -5,8 +5,8 @@ description: Generate an image using OpenRouter. Use this whenever the user asks
 
 # Generate Image
 
-Run `tools/generate-image.py` to generate an image.
+Run the generate-image tool located in this skill directory.
 
 ```bash
-uv run tools/generate-image.py <output-path> "<prompt>"
+uv run --with-requirements .claude/skills/generate-image/requirements.txt .claude/skills/generate-image/generate-image.py <output-path> "<prompt>"
 ```

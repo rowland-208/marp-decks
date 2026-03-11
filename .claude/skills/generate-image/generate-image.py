@@ -11,7 +11,10 @@ from urllib.request import Request, urlopen
 import click
 from dotenv import load_dotenv
 
-load_dotenv(Path(__file__).resolve().parent / ".env")
+_skill_dir = Path(__file__).resolve().parent
+_project_root = _skill_dir.parents[2]
+load_dotenv(_skill_dir / ".env")
+load_dotenv(_project_root / ".env")
 
 OPENROUTER_API_URL = os.environ.get("OPENROUTER_API_URL", "https://openrouter.ai/api/v1/chat/completions")
 DEFAULT_MODEL = os.environ.get("OPENROUTER_IMAGE_GEN_MODEL", "google/gemini-3.1-flash-image-preview")

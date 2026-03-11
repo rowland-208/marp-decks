@@ -45,9 +45,3 @@ Use uv for all python package management and install.
 uv --version
 ```
 
-## 5. Python venv and requirements
-
-```bash
-uv venv && uv pip install -r tools/requirements.txt
-```
-

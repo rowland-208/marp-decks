@@ -34,9 +34,11 @@ root/
 ---- laser-cutter-101/
 ------ laser-cutter-101.md
 ------ omtech.png
--- tools/
----- generate-image.py
----- upload.sh
+-- .claude/skills/
+---- generate-image/
+------ SKILL.md
+------ generate-image.py
+------ requirements.txt
 
 ## Tools
 
