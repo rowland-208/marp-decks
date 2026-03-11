@@ -11,6 +11,7 @@ paginate: true
 James Rowland
 Cape Fear Makers Guild
 April 7, 2026
+[github.com/rowland-208/marp-decks](https://github.com/rowland-208/marp-decks)
 
 ---
 
