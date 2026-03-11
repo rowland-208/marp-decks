@@ -24,13 +24,21 @@
 
     header {
       margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      height: 8rem;
+      margin-bottom: 1rem;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #4a5aff, #d946ef);
+      background: linear-gradient(135deg, #2e6b34, #c4a632);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -54,13 +62,13 @@
       bottom: 2px;
       width: 100%;
       height: 3px;
-      background: linear-gradient(135deg, #4a5aff, #d946ef);
+      background: linear-gradient(135deg, #2e6b34, #c4a632);
       border-radius: 2px;
       transition: opacity 0.2s;
     }
 
     h1 a:hover {
-      filter: drop-shadow(0 0 12px rgba(146, 80, 247, 0.6)) drop-shadow(0 0 30px rgba(146, 80, 247, 0.35));
+      filter: drop-shadow(0 0 12px rgba(46, 107, 52, 0.6)) drop-shadow(0 0 30px rgba(196, 166, 50, 0.35));
     }
 
     .deck-list {
@@ -82,9 +90,9 @@
     }
 
     .deck-list a:hover {
-      border-color: #5b6bdf;
+      border-color: #2e6b34;
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(91, 107, 223, 0.12);
+      box-shadow: 0 4px 20px rgba(46, 107, 52, 0.12);
     }
 
     .deck-title {
@@ -107,7 +115,7 @@
     }
 
     .deck-list a:hover .arrow {
-      color: #5b6bdf;
+      color: #2e6b34;
       transform: translateX(3px);
     }
   </style>
@@ -115,7 +123,8 @@
 <body>
   <main>
     <header>
-      <h1>Built with <a href="https://github.com/rowland-208/marp-decks">marp-decks</a></h1>
+      <img src="etc/logo.png" alt="Marp Decks logo" class="logo">
+      <h1>Slides built with <a href="https://github.com/rowland-208/marp-decks">Marp-Decks</a></h1>
     </header>
     <ul class="deck-list">
       <li>
