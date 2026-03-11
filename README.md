@@ -10,6 +10,15 @@ Check out these example decks, built with marp-decks and hosted on github pages:
 
 [https://rowland-208.github.io/marp-decks/](https://rowland-208.github.io/marp-decks/)
 
+## Supported
+
+- Live rendering
+- Skills for image generation and publication
+- Slides in version control
+- Claude Code native
+- Skills to build new skills
+- Publish slides online with github pages
+
 ## Getting Started
 
 1. `$ git clone https://github.com/rowland-208/marp-decks.git && cd marp-decks`
