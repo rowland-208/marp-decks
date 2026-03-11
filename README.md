@@ -1,5 +1,9 @@
 # Marp-Decks
 
+<p align="center">
+  <img src="etc/mascot.png" alt="Marp-Decks Mascot" width="400">
+</p>
+
 Marp-Decks is a collection of claude skills to build better slide decks with marp.
 
 Check out these example decks, built with marp-decks and hosted on github pages:
