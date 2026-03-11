@@ -15,7 +15,7 @@ Export the specified deck to HTML, commit, and push.
 marp decks/<deck-name>/<deck-name>.md --output decks/<deck-name>/<deck-name>.html
 ```
 
-2. Add a link to the new deck in `index.html` following the existing format.
+2. Add a link to the new deck at the **top** of the list in `index.html` (first `<li>` inside `<ul class="deck-list">`), following the existing format.
 
 3. Stage all files: deck.html, images, index.html
 
