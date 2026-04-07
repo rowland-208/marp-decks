@@ -74,7 +74,7 @@ April 7, 2026
 
 # Setup
 
-Is anyone going to follow along?
+Who will follow along?
 
 1. **Install Claude Code** — open a terminal and run:
    ```bash
@@ -91,10 +91,11 @@ If you're interested in alternatives please ask after the talk
 
 - Pricing is **variable** right now — the market is still shaking out
 - **Claude Code** — reasonable $17/mo, but you can burn through limits fast
+- **Cursor** — $20/mo with free tier available, subsidized by vc funding
 - **GitHub Copilot** — $10/mo with free tier available, subsidized by microsoft
 - **API** — pay for what you use, unlimited usage but may encounter throttling
-- **OpenCode + OpenRouter** — often totally free but models are highly variable
-- **Key insight**: get used to changing this up, models are commodities not secret sauce
+- **OpenCode + OpenRouter** — often totally free but models are highly variable, non-trivial setup
+- **Key insight**: get used to shifting sands, models are commodities not secret sauce
 
 ---
 
@@ -102,7 +103,7 @@ If you're interested in alternatives please ask after the talk
 
 # What Should We Build?
 
-Let's brainstorm an app together.
+Let's brainstorm an app together
 
 ---
 
@@ -113,14 +114,14 @@ Don't be afraid of the terminal — it's just a **text interface** to your compu
 - You type a command, it does something, it shows you the result
 - Everything you do with a mouse, you can do with text
 - **Why agents need it**: agents act by running commands — the terminal is how they interact with your computer
-- Technically agents can use GUIs but it burns through limits even faster and is clunky
+- Technically agents can use GUIs but it burns through limits faster and is clunky
 
 ```bash
 ls               # list files and directories
 cd repos         # move to a directory
 mkdir <app-name> # make a new directory
 cd <app-name>
-claude 		 # start claude and prompt it
+claude           # start claude and prompt it
 ```
 
 ---
@@ -129,9 +130,25 @@ claude 		 # start claude and prompt it
 
 - Claude **wrote files**, **ran commands**, **hit errors**, **fixed them**, and **iterated**
 - Exactly what you would do with terminal commands
-- All from a single prompt
 - It read error messages, adjusted its approach, and tried again
 - This is what makes it an **agent**, not just a chatbot
+
+---
+
+# Tokens & Context
+
+**Tokens** — chunks of text the model reads and writes
+- "hello" = 1 token, "unbelievable" = 3 tokens
+- ~4 characters per tokens
+- Code is more token-dense than prose
+
+**Context** — the window of text the model can see at once
+- Too much = slow and expensive
+- Too little = the agent forgets what it's doing
+
+```bash
+/context   # run this in Claude Code to see current usage
+```
 
 ---
 
@@ -143,10 +160,8 @@ Project-level instructions that Claude reads **every session**
 
 - Lives in your project root
 - Tell Claude your preferences, conventions, and constraints
-- E.g. I like tabs instead of spaces
+- E.g. "Yes Caption"
 - Claude follows them automatically
-
-Yes Captain!!
 
 ---
 
@@ -163,6 +178,7 @@ A skill is a **reusable prompt** you invoke with a slash command
 - Saved as a markdown file in `.claude/skills/`
 - Can control tool use, include files, run scripts
 - Think of it as a recipe Claude follows, or **pseudocode** that claude executes
+- Or like coding scripts with LLM as the interpreter
 
 **What skill should we add?**
 
@@ -183,6 +199,9 @@ Let's rebuild our app with superpowers active and see the difference:
 - Step-by-step planning
 - Review checkpoints
 
+
+Select plugins carefully, build your own skills, vanilla models+harnesses are getting better over time
+
 ---
 
 # What Changed?
@@ -191,6 +210,30 @@ Let's rebuild our app with superpowers active and see the difference:
 - Brainstorming helped us make a better plan
 - Subagent development keeps the main agent on task and keeps context clean
 - The agent didn't change — **we changed how we directed it**
+
+---
+
+# Agentic OS Architecture
+
+Analogy: linux is a collection of components
+
+```
+              ┌────────────────┐
+              │  User Input    │
+              │ terminal, chat │
+              └───────┬────────┘
+ ┌───────────┐  ┌─────▼─────┐   ┌──────────┐
+ │  Config   │  │ Harness   │   │  Model   │
+ │ CLAUDE.md,│─►│           │◄─►│ Claude,  │
+ │ skills,   │  │ Claude    │   │ GPT,     │
+ │ hooks     │  │ Open Claw │   │ Gemini   │
+ └───────────┘  └─────┬─────┘   └──────────┘
+          ┌───────────▼────────────┐
+          │    Runtime + Tools     │
+          │ terminal,     git, gh, │
+          │  files       npm, cli  │
+          └────────────────────────┘
+```
 
 ---
 
@@ -213,39 +256,15 @@ Humans need iteration to get it right too. A good idea is only as good as your a
 
 The code that **connects the AI to tools**
 
-| Harness | Who makes it | Open source? |
-|---------|-------------|--------------|
-| Claude Code | Anthropic | No |
-| Cursor | Cursor | No |
-| Open Code | Community | Yes |
-| Open Claw | OpenAI | Yes |
-| Cowork | Anthropic | No |
+| Harness | Who makes it | Open source | Coding First | Hands Off |
+|---------|-------------|--------------|----------------------|-----------|
+| Claude Code | Anthropic | No | Yes | Kind of |
+| Cursor | Cursor | No | Yes | No |
+| Open Code | Community | Yes | Yes | No |
+| Open Claw | OpenAI | Yes | No | Yes |
+| Cowork | Anthropic | No | No | Yes |
 
 The harness determines what the agent **can do** — same model, different harness, different capabilities, e.g. terminal, gui, files, memory, connect to discord/whatsapp
-
----
-
-# Agent OS Architecture
-
-```
-                ┌──────────┐
-                │  User    │
-                └────┬─────┘
-                     │ prompts, feedback
- ┌───────────┐  ┌────▼──────┐   ┌──────────┐
- │  Config   │  │ Harness   │   │  Model   │
- │ CLAUDE.md,│─►│           │◄─►│ Claude,  │
- │ skills,   │  │ Claude    │   │ GPT,     │
- │ hooks     │  │ Code,     │   │ Gemini   │
- └───────────┘  │ Copilot   │   └──────────┘
-                └──┬────┬───┘
-                   │    │
-          ┌────────▼┐  ┌▼─────────┐
-          │Runtime  │  │  Tools   │
-          │terminal,│  │ git, gh, │
-          │ files   │  │ npm, cli │
-          └─────────┘  └──────────┘
-```
 
 ---
 
@@ -284,23 +303,6 @@ Skills:
 - **Combine with scripts** for complex workflows
 - Use the **skill builder skill** to create new skills
 - Or just ask vanilla Claude to write one for you
-
----
-
-# Tokens & Context
-
-**Tokens** — chunks of text the model reads and writes
-- "hello" = 1 token, "unbelievable" = 3 tokens
-- ~4 characters per tokens
-- Code is more token-dense than prose
-
-**Context** — the window of text the model can see at once
-- Too much = slow and expensive
-- Too little = the agent forgets what it's doing
-
-```bash
-/context   # run this in Claude Code to see current usage
-```
 
 ---
 

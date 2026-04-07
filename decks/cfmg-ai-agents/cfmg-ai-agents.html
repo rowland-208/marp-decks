@@ -241,7 +241,7 @@ td {
 }
 ;" data-marpit-pagination-total="22">
 <h1 id="setup">Setup</h1>
-<p>Is anyone going to follow along?</p>
+<p>Who will follow along?</p>
 <ol>
 <li><strong>Install Claude Code</strong> — open a terminal and run:<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">curl -fsSL https://claude.ai/install.sh | bash
 </code></pre>
@@ -368,10 +368,11 @@ td {
 <ul>
 <li>Pricing is <strong>variable</strong> right now — the market is still shaking out</li>
 <li><strong>Claude Code</strong> — reasonable $17/mo, but you can burn through limits fast</li>
+<li><strong>Cursor</strong> — $20/mo with free tier available, subsidized by vc funding</li>
 <li><strong>GitHub Copilot</strong> — $10/mo with free tier available, subsidized by microsoft</li>
 <li><strong>API</strong> — pay for what you use, unlimited usage but may encounter throttling</li>
-<li><strong>OpenCode + OpenRouter</strong> — often totally free but models are highly variable</li>
-<li><strong>Key insight</strong>: get used to changing this up, models are commodities not secret sauce</li>
+<li><strong>OpenCode + OpenRouter</strong> — often totally free but models are highly variable, non-trivial setup</li>
+<li><strong>Key insight</strong>: get used to shifting sands, models are commodities not secret sauce</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-class="lead" data-theme="default" data-style=":root {
@@ -488,7 +489,7 @@ td {
 }
 ;" data-marpit-pagination-total="22">
 <h1 id="what-should-we-build">What Should We Build?</h1>
-<p>Let's brainstorm an app together.</p>
+<p>Let's brainstorm an app together</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -609,13 +610,13 @@ td {
 <li>You type a command, it does something, it shows you the result</li>
 <li>Everything you do with a mouse, you can do with text</li>
 <li><strong>Why agents need it</strong>: agents act by running commands — the terminal is how they interact with your computer</li>
-<li>Technically agents can use GUIs but it burns through limits even faster and is clunky</li>
+<li>Technically agents can use GUIs but it burns through limits faster and is clunky</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">ls</span>               <span class="hljs-comment"># list files and directories</span>
 <span class="hljs-built_in">cd</span> repos         <span class="hljs-comment"># move to a directory</span>
 <span class="hljs-built_in">mkdir</span> &lt;app-name&gt; <span class="hljs-comment"># make a new directory</span>
 <span class="hljs-built_in">cd</span> &lt;app-name&gt;
-claude 		 <span class="hljs-comment"># start claude and prompt it</span>
+claude           <span class="hljs-comment"># start claude and prompt it</span>
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" data-style=":root {
@@ -735,12 +736,11 @@ td {
 <ul>
 <li>Claude <strong>wrote files</strong>, <strong>ran commands</strong>, <strong>hit errors</strong>, <strong>fixed them</strong>, and <strong>iterated</strong></li>
 <li>Exactly what you would do with terminal commands</li>
-<li>All from a single prompt</li>
 <li>It read error messages, adjusted its approach, and tried again</li>
 <li>This is what makes it an <strong>agent</strong>, not just a chatbot</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-class="lead" data-theme="default" data-style=":root {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
   --color-foreground: #141413;
   --color-highlight: #d97757;
@@ -796,7 +796,7 @@ th {
 td {
   background: #faf9f5;
 }
-" lang="en-US" class="lead" data-marpit-pagination="7" style="--paginate:true;--class:lead;--theme:default;--style::root {
+" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;--style::root {
   --color-background: #faf9f5;
   --color-foreground: #141413;
   --color-highlight: #d97757;
@@ -853,15 +853,20 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="claudemd">CLAUDE.md</h1>
-<p>Project-level instructions that Claude reads <strong>every session</strong></p>
+<h1 id="tokens--context">Tokens &amp; Context</h1>
+<p><strong>Tokens</strong> — chunks of text the model reads and writes</p>
 <ul>
-<li>Lives in your project root</li>
-<li>Tell Claude your preferences, conventions, and constraints</li>
-<li>E.g. I like tabs instead of spaces</li>
-<li>Claude follows them automatically</li>
+<li>&quot;hello&quot; = 1 token, &quot;unbelievable&quot; = 3 tokens</li>
+<li>~4 characters per tokens</li>
+<li>Code is more token-dense than prose</li>
 </ul>
-<p>Yes Captain!!</p>
+<p><strong>Context</strong> — the window of text the model can see at once</p>
+<ul>
+<li>Too much = slow and expensive</li>
+<li>Too little = the agent forgets what it's doing</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">/context   <span class="hljs-comment"># run this in Claude Code to see current usage</span>
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-class="lead" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -976,16 +981,14 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="build-a-skill">Build a Skill</h1>
-<p>A skill is a <strong>reusable prompt</strong> you invoke with a slash command</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>/my-skill
-</code></pre>
+<h1 id="claudemd">CLAUDE.md</h1>
+<p>Project-level instructions that Claude reads <strong>every session</strong></p>
 <ul>
-<li>Saved as a markdown file in <code>.claude/skills/</code></li>
-<li>Can control tool use, include files, run scripts</li>
-<li>Think of it as a recipe Claude follows, or <strong>pseudocode</strong> that claude executes</li>
+<li>Lives in your project root</li>
+<li>Tell Claude your preferences, conventions, and constraints</li>
+<li>E.g. &quot;Yes Caption&quot;</li>
+<li>Claude follows them automatically</li>
 </ul>
-<p><strong>What skill should we add?</strong></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-class="lead" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -1100,18 +1103,19 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="superpowers-plugin">Superpowers Plugin</h1>
-<p>A collection of skills for <strong>planning</strong>, <strong>TDD</strong>, <strong>debugging</strong>, and more</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">/plugin install superpowers@claude-plugins-official
+<h1 id="build-a-skill">Build a Skill</h1>
+<p>A skill is a <strong>reusable prompt</strong> you invoke with a slash command</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>/my-skill
 </code></pre>
-<p>Let's rebuild our app with superpowers active and see the difference:</p>
 <ul>
-<li>Brainstorming before building</li>
-<li>Step-by-step planning</li>
-<li>Review checkpoints</li>
+<li>Saved as a markdown file in <code>.claude/skills/</code></li>
+<li>Can control tool use, include files, run scripts</li>
+<li>Think of it as a recipe Claude follows, or <strong>pseudocode</strong> that claude executes</li>
+<li>Or like coding scripts with LLM as the interpreter</li>
 </ul>
+<p><strong>What skill should we add?</strong></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" data-style=":root {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-class="lead" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
   --color-foreground: #141413;
   --color-highlight: #d97757;
@@ -1167,7 +1171,7 @@ th {
 td {
   background: #faf9f5;
 }
-" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:default;--style::root {
+" lang="en-US" class="lead" data-marpit-pagination="10" style="--paginate:true;--class:lead;--theme:default;--style::root {
   --color-background: #faf9f5;
   --color-foreground: #141413;
   --color-highlight: #d97757;
@@ -1224,13 +1228,17 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="what-changed">What Changed?</h1>
+<h1 id="superpowers-plugin">Superpowers Plugin</h1>
+<p>A collection of skills for <strong>planning</strong>, <strong>TDD</strong>, <strong>debugging</strong>, and more</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">/plugin install superpowers@claude-plugins-official
+</code></pre>
+<p>Let's rebuild our app with superpowers active and see the difference:</p>
 <ul>
-<li>Same tool, same model, same terminal</li>
-<li>Brainstorming helped us make a better plan</li>
-<li>Subagent development keeps the main agent on task and keeps context clean</li>
-<li>The agent didn't change — <strong>we changed how we directed it</strong></li>
+<li>Brainstorming before building</li>
+<li>Step-by-step planning</li>
+<li>Review checkpoints</li>
 </ul>
+<p>Select plugins carefully, build your own skills, vanilla models+harnesses are getting better over time</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -1345,16 +1353,13 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="agent">Agent</h1>
-<p><strong>LLM + tools + iteration loop</strong></p>
+<h1 id="what-changed">What Changed?</h1>
 <ul>
-<li><strong>LLM</strong> — the brain, generates text and decisions</li>
-<li><strong>Tools</strong> — terminal, file editor, memory, web search, Discord, WhatsApp, etc.</li>
-<li><strong>Iteration</strong> — run a command, read the output, decide what to do next</li>
+<li>Same tool, same model, same terminal</li>
+<li>Brainstorming helped us make a better plan</li>
+<li>Subagent development keeps the main agent on task and keeps context clean</li>
+<li>The agent didn't change — <strong>we changed how we directed it</strong></li>
 </ul>
-<p>The loop is what separates an agent from a chatbot:<br />
-a chatbot answers; an agent <strong>acts, observes, and adjusts</strong></p>
-<p>Humans need iteration to get it right too. A good idea is only as good as your ability to try it.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -1469,45 +1474,24 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="harness">Harness</h1>
-<p>The code that <strong>connects the AI to tools</strong></p>
-<table>
-<thead>
-<tr>
-<th>Harness</th>
-<th>Who makes it</th>
-<th>Open source?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Claude Code</td>
-<td>Anthropic</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Cursor</td>
-<td>Cursor</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Open Code</td>
-<td>Community</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Open Claw</td>
-<td>OpenAI</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Cowork</td>
-<td>Anthropic</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-<p>The harness determines what the agent <strong>can do</strong> — same model, different harness, different capabilities, e.g. terminal, gui, files, memory, connect to discord/whatsapp</p>
+<h1 id="agentic-os-architecture">Agentic OS Architecture</h1>
+<p>Analogy: linux is a collection of components</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>              ┌────────────────┐
+              │  User Input    │
+              │ terminal, chat │
+              └───────┬────────┘
+ ┌───────────┐  ┌─────▼─────┐   ┌──────────┐
+ │  Config   │  │ Harness   │   │  Model   │
+ │ CLAUDE.md,│─►│           │◄─►│ Claude,  │
+ │ skills,   │  │ Claude    │   │ GPT,     │
+ │ hooks     │  │ Open Claw │   │ Gemini   │
+ └───────────┘  └─────┬─────┘   └──────────┘
+          ┌───────────▼────────────┐
+          │    Runtime + Tools     │
+          │ terminal,     git, gh, │
+          │  files       npm, cli  │
+          └────────────────────────┘
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -1622,25 +1606,16 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="agent-os-architecture">Agent OS Architecture</h1>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>                ┌──────────┐
-                │  User    │
-                └────┬─────┘
-                     │ prompts, feedback
- ┌───────────┐  ┌────▼──────┐   ┌──────────┐
- │  Config   │  │ Harness   │   │  Model   │
- │ CLAUDE.md,│─►│           │◄─►│ Claude,  │
- │ skills,   │  │ Claude    │   │ GPT,     │
- │ hooks     │  │ Code,     │   │ Gemini   │
- └───────────┘  │ Copilot   │   └──────────┘
-                └──┬────┬───┘
-                   │    │
-          ┌────────▼┐  ┌▼─────────┐
-          │Runtime  │  │  Tools   │
-          │terminal,│  │ git, gh, │
-          │ files   │  │ npm, cli │
-          └─────────┘  └──────────┘
-</code></pre>
+<h1 id="agent">Agent</h1>
+<p><strong>LLM + tools + iteration loop</strong></p>
+<ul>
+<li><strong>LLM</strong> — the brain, generates text and decisions</li>
+<li><strong>Tools</strong> — terminal, file editor, memory, web search, Discord, WhatsApp, etc.</li>
+<li><strong>Iteration</strong> — run a command, read the output, decide what to do next</li>
+</ul>
+<p>The loop is what separates an agent from a chatbot:<br />
+a chatbot answers; an agent <strong>acts, observes, and adjusts</strong></p>
+<p>Humans need iteration to get it right too. A good idea is only as good as your ability to try it.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -1755,15 +1730,57 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="model">Model</h1>
-<p>The AI brain itself — you have choices</p>
-<ul>
-<li><strong>Big labs</strong> — OpenAI (GPT), Anthropic (Claude), Google (Gemini)</li>
-<li><strong>OpenRouter</strong> — one API, access to many models</li>
-<li><strong>Self-hosted</strong> — run models on your own hardware (Gemma, Qwen)</li>
-</ul>
-<p><strong>Harness + model interact</strong>: Claude Code works best with Claude models, Copilot works best with OpenAI models</p>
-<p>Pick based on your task, budget, and privacy needs</p>
+<h1 id="harness">Harness</h1>
+<p>The code that <strong>connects the AI to tools</strong></p>
+<table>
+<thead>
+<tr>
+<th>Harness</th>
+<th>Who makes it</th>
+<th>Open source</th>
+<th>Coding First</th>
+<th>Hands Off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td>Anthropic</td>
+<td>No</td>
+<td>Yes</td>
+<td>Kind of</td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td>Cursor</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Open Code</td>
+<td>Community</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Open Claw</td>
+<td>OpenAI</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Cowork</td>
+<td>Anthropic</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The harness determines what the agent <strong>can do</strong> — same model, different harness, different capabilities, e.g. terminal, gui, files, memory, connect to discord/whatsapp</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -1878,39 +1895,15 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="skills--config">Skills &amp; Config</h1>
-<p>How you customize agent behavior — multiple layers:</p>
-<table>
-<thead>
-<tr>
-<th>Config</th>
-<th>Scope</th>
-<th>Standard?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>CLAUDE.md</strong> / <strong>AGENTS.md</strong></td>
-<td>Project instructions</td>
-<td>Most harnesses</td>
-</tr>
-<tr>
-<td><strong>Skills</strong></td>
-<td>Reusable workflows</td>
-<td>Claude format spreading</td>
-</tr>
-<tr>
-<td><strong>Hooks</strong></td>
-<td>Shell triggers on events</td>
-<td>Claude Code only</td>
-</tr>
-<tr>
-<td><strong>settings.json</strong></td>
-<td>Harness settings</td>
-<td>Claude Code only</td>
-</tr>
-</tbody>
-</table>
+<h1 id="model">Model</h1>
+<p>The AI brain itself — you have choices</p>
+<ul>
+<li><strong>Big labs</strong> — OpenAI (GPT), Anthropic (Claude), Google (Gemini)</li>
+<li><strong>OpenRouter</strong> — one API, access to many models</li>
+<li><strong>Self-hosted</strong> — run models on your own hardware (Gemma, Qwen)</li>
+</ul>
+<p><strong>Harness + model interact</strong>: Claude Code works best with Claude models, Copilot works best with OpenAI models</p>
+<p>Pick based on your task, budget, and privacy needs</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -2025,15 +2018,39 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="skills--config-1">Skills &amp; Config</h1>
-<p>Skills:</p>
-<ul>
-<li>Control <strong>which tools</strong> the agent can use</li>
-<li><strong>Inherit files</strong> for context</li>
-<li><strong>Combine with scripts</strong> for complex workflows</li>
-<li>Use the <strong>skill builder skill</strong> to create new skills</li>
-<li>Or just ask vanilla Claude to write one for you</li>
-</ul>
+<h1 id="skills--config">Skills &amp; Config</h1>
+<p>How you customize agent behavior — multiple layers:</p>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Scope</th>
+<th>Standard?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CLAUDE.md</strong> / <strong>AGENTS.md</strong></td>
+<td>Project instructions</td>
+<td>Most harnesses</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Reusable workflows</td>
+<td>Claude format spreading</td>
+</tr>
+<tr>
+<td><strong>Hooks</strong></td>
+<td>Shell triggers on events</td>
+<td>Claude Code only</td>
+</tr>
+<tr>
+<td><strong>settings.json</strong></td>
+<td>Harness settings</td>
+<td>Claude Code only</td>
+</tr>
+</tbody>
+</table>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
@@ -2148,20 +2165,15 @@ td {
   background: #faf9f5;
 }
 ;" data-marpit-pagination-total="22">
-<h1 id="tokens--context">Tokens &amp; Context</h1>
-<p><strong>Tokens</strong> — chunks of text the model reads and writes</p>
+<h1 id="skills--config-1">Skills &amp; Config</h1>
+<p>Skills:</p>
 <ul>
-<li>&quot;hello&quot; = 1 token, &quot;unbelievable&quot; = 3 tokens</li>
-<li>~4 characters per tokens</li>
-<li>Code is more token-dense than prose</li>
+<li>Control <strong>which tools</strong> the agent can use</li>
+<li><strong>Inherit files</strong> for context</li>
+<li><strong>Combine with scripts</strong> for complex workflows</li>
+<li>Use the <strong>skill builder skill</strong> to create new skills</li>
+<li>Or just ask vanilla Claude to write one for you</li>
 </ul>
-<p><strong>Context</strong> — the window of text the model can see at once</p>
-<ul>
-<li>Too much = slow and expensive</li>
-<li>Too little = the agent forgets what it's doing</li>
-</ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">/context   <span class="hljs-comment"># run this in Claude Code to see current usage</span>
-</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" data-style=":root {
   --color-background: #faf9f5;
