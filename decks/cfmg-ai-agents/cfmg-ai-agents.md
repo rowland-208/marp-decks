@@ -74,7 +74,7 @@ April 7, 2026
 
 # Setup
 
-Who will follow along?
+Who wants to follow along?
 
 1. **Install Claude Code** — open a terminal and run:
    ```bash
