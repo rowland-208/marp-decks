@@ -93,7 +93,7 @@ If you're interested in alternatives please ask after the talk
 - **Claude Code** — reasonable $17/mo, but you can burn through limits fast
 - **Cursor** — $20/mo with free tier available, subsidized by vc funding
 - **GitHub Copilot** — $10/mo with free tier available, subsidized by microsoft
-- **API** — pay for what you use, unlimited usage but may encounter throttling
+- **API** — pay for what you use, no limits but may encounter throttling
 - **OpenCode + OpenRouter** — often totally free but models are highly variable, non-trivial setup
 - **Key insight**: get used to shifting sands, models are commodities not secret sauce
 
