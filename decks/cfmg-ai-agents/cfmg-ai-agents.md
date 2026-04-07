@@ -2,6 +2,63 @@
 marp: true
 theme: default
 paginate: true
+style: |
+  :root {
+    --color-background: #faf9f5;
+    --color-foreground: #141413;
+    --color-highlight: #d97757;
+    --color-dimmed: #b0aea5;
+  }
+  section {
+    background: #faf9f5;
+    color: #141413;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  section::after {
+    color: #b0aea5;
+  }
+  h1 {
+    color: #d97757;
+  }
+  h2 {
+    color: #d97757;
+    border-bottom: 2px solid #e8e6dc;
+    padding-bottom: 8px;
+  }
+  h3 {
+    color: #141413;
+  }
+  strong {
+    color: #d97757;
+  }
+  a {
+    color: #6a9bcc;
+  }
+  li {
+    color: #141413;
+  }
+  code {
+    background: #e8e6dc;
+    color: #141413;
+  }
+  pre code {
+    background: transparent;
+  }
+  pre {
+    background: #e8e6dc;
+    border: 1px solid #b0aea5;
+    border-radius: 8px;
+  }
+  table {
+    color: #141413;
+  }
+  th {
+    background: #e8e6dc;
+    color: #d97757;
+  }
+  td {
+    background: #faf9f5;
+  }
 ---
 
 <!-- _class: lead -->
@@ -17,141 +74,305 @@ April 7, 2026
 
 # Setup
 
-1. **Claude desktop app** — [claude.ai/download](https://claude.ai/download)
-2. **Claude subscription** — [claude.ai/upgrade](https://claude.ai/upgrade)
-4. **Obsidian** — [obsidian.md](https://obsidian.md)
+Is anyone going to follow along?
+
+1. **Install Claude Code** — open a terminal and run:
+   ```bash
+   curl -fsSL https://claude.ai/install.sh | bash
+   ```
+2. **Authenticate** — run `claude` and follow the prompts
+
+**Note**: Claude Code requires a paid subscription $17/mo
+If you're interested in alternatives please ask after the talk
+
+---
+
+# AI Pricing
+
+- Pricing is **variable** right now — the market is still shaking out
+- **Claude Code** — reasonable $17/mo, but you can burn through limits fast
+- **GitHub Copilot** — $10/mo with free tier available, subsidized by microsoft
+- **API** — pay for what you use, unlimited usage but may encounter throttling
+- **OpenCode + OpenRouter** — often totally free but models are highly variable
+- **Key insight**: get used to changing this up, models are commodities not secret sauce
 
 ---
 
 <!-- _class: lead -->
 
-# Demo: Claude in the Browser
+# What Should We Build?
 
-Chat with Claude on claude.ai — ask it to create a Connections puzzle:
+Let's brainstorm an app together.
 
-> Create a 4x4 grid of 16 words. These words must be divisible into four groups of four that share a common, hidden theme. The themes should be: 1. Equipment at a makerspace, 2. Synonyms for 'fast', 3. Words that follow 'Book', 4. Movie characters that are engineers
+---
 
-**Why this works**: no search engine can do this — the answer requires creative synthesis over novel constraints
+# Build It
+
+Don't be afraid of the terminal — it's just a **text interface** to your computer
+
+- You type a command, it does something, it shows you the result
+- Everything you do with a mouse, you can do with text
+- **Why agents need it**: agents act by running commands — the terminal is how they interact with your computer
+- Technically agents can use GUIs but it burns through limits even faster and is clunky
+
+```bash
+ls               # list files and directories
+cd repos         # move to a directory
+mkdir <app-name> # make a new directory
+cd <app-name>
+claude 		 # start claude and prompt it
+```
+
+---
+
+# What Just Happened?
+
+- Claude **wrote files**, **ran commands**, **hit errors**, **fixed them**, and **iterated**
+- Exactly what you would do with terminal commands
+- All from a single prompt
+- It read error messages, adjusted its approach, and tried again
+- This is what makes it an **agent**, not just a chatbot
 
 ---
 
 <!-- _class: lead -->
 
-# Demo: Walled Garden vs Terminal
+# CLAUDE.md
 
-> Create and serve a hello world webpage
+Project-level instructions that Claude reads **every session**
 
-**Browser** — can write the HTML, but can't serve it. The browser is a walled garden.
+- Lives in your project root
+- Tell Claude your preferences, conventions, and constraints
+- E.g. I like tabs instead of spaces
+- Claude follows them automatically
 
-**Claude Code** — writes the file, starts a server, and it works. The terminal is how you break out.
-
----
-
-<!-- _class: lead -->
-
-# Demo: Build a Game
-
-> Build a multiplayer top-down dungeon crawler using React, Phaser, Express, and SQLite. 8-bit pixel art style with a muted color palette, pixel art avatar editor, NPC monsters, weapon/health/mana loot, and a small set of spells. The full dungeon map should be visible with multiple rooms. Start by making a plan.
-
-We'll use `--dangerously-skip-permissions` — don't try this at home
-
-Claude can `rm -rf /`, install malware, or push to your repos without asking
+Yes Captain!!
 
 ---
 
 <!-- _class: lead -->
 
-# Demo: Knowledge Base
+# Build a Skill
 
-1. New folder, open in **Obsidian**, add some markdown
-2. Ask Claude to summarize
+A skill is a **reusable prompt** you invoke with a slash command
 
-Agent brain: markdown is the data, Obsidian is the viewer
+```
+/my-skill
+```
+
+- Saved as a markdown file in `.claude/skills/`
+- Can control tool use, include files, run scripts
+- Think of it as a recipe Claude follows, or **pseudocode** that claude executes
+
+**What skill should we add?**
 
 ---
 
 <!-- _class: lead -->
 
-# Demo: CLAUDE.md & Skills
+# Superpowers Plugin
 
-- Create two notes with related content
+A collection of skills for **planning**, **TDD**, **debugging**, and more
 
-> Create a /link skill that finds related notes and adds wikilinks between them
+```bash
+/plugin install superpowers@claude-plugins-official
+```
 
-- Use the `/link` skill
-- Add a **CLAUDE.md** with a wikilinks preference
-
----
-
-# Claude Ecosystem
-
-- **Multiple harnesses**: chat, code, remote code, desktop
-- **CLAUDE.md & skills** for project-level config and automation
-- **Built-in tools**: task management, planning, memory
-- **Remote control**: interact from your phone, like Open Claw but terminal-native
-- **Sub-agents**: spin up parallel workers for complex tasks
-- **Hooks**: trigger shell commands on agent events
+Let's rebuild our app with superpowers active and see the difference:
+- Brainstorming before building
+- Step-by-step planning
+- Review checkpoints
 
 ---
 
-# Iteration Makes Problem Solving Work
+# What Changed?
 
-- **LLM alone** — can think, write, answer, but stuck in a box
-- **Agent** — LLM + tools + feedback loop — it can *act*, observe results, and adjust
-- **Building requires testing** — thinking isn't enough, you have to run the code, see what breaks, fix it — agents do this automatically
-- Everything we just built used an **agent**, not just a chatbot
-
----
-
-![w:900 center](tool-iteration.png)
+- Same tool, same model, same terminal
+- Brainstorming helped us make a better plan
+- Subagent development keeps the main agent on task and keeps context clean
+- The agent didn't change — **we changed how we directed it**
 
 ---
 
-![w:900 center](length-of-tasks-log.png)
+# Agent
+
+**LLM + tools + iteration loop**
+
+- **LLM** — the brain, generates text and decisions
+- **Tools** — terminal, file editor, memory, web search, Discord, WhatsApp, etc.
+- **Iteration** — run a command, read the output, decide what to do next
+
+The loop is what separates an agent from a chatbot:
+a chatbot answers; an agent **acts, observes, and adjusts**
+
+Humans need iteration to get it right too. A good idea is only as good as your ability to try it.
 
 ---
 
-# Runtime Environment
+# Harness
 
-- Agents need a world to act in
-- **Linux shell** is the best
-- **CLI tools** give broader access
-- The runtime is the house; the tools are the furniture
+The code that **connects the AI to tools**
 
----
+| Harness | Who makes it | Open source? |
+|---------|-------------|--------------|
+| Claude Code | Anthropic | No |
+| Cursor | Cursor | No |
+| Open Code | Community | Yes |
+| Open Claw | OpenAI | Yes |
+| Cowork | Anthropic | No |
 
-# Agentic Operating System
-
-Pick and choose the parts
-
-- **Model**: Claude → open models
-- **Harness**: Claude Code → Open Code, Codex, GitHub Copilot, etc.
-- **Text format**: Markdown — the standard, works everywhere
-- **Version control**: Git — the standard, GitHub is just one host
-- **Viewer**: Obsidian is open, but any markdown viewer works
+The harness determines what the agent **can do** — same model, different harness, different capabilities, e.g. terminal, gui, files, memory, connect to discord/whatsapp
 
 ---
 
-# CFMB — Our Discord Bot
+# Agent OS Architecture
 
-<style scoped>section { position: relative; } section img[alt="logo"] { position: absolute; top: 30px; right: 30px; width: 120px; }</style>
-
-![logo](cfmg.png)
-
-Claude Code and the other harnesses are just wrappers around models — you can build your own
-
-- Custom agent tailored to our community
-- [github.com/rowland-208/cfmb](https://github.com/rowland-208/cfmb/tree/main/cfmb)
+```
+                ┌──────────┐
+                │  User    │
+                └────┬─────┘
+                     │ prompts, feedback
+ ┌───────────┐  ┌────▼──────┐   ┌──────────┐
+ │  Config   │  │ Harness   │   │  Model   │
+ │ CLAUDE.md,│─►│           │◄─►│ Claude,  │
+ │ skills,   │  │ Claude    │   │ GPT,     │
+ │ hooks     │  │ Code,     │   │ Gemini   │
+ └───────────┘  │ Copilot   │   └──────────┘
+                └──┬────┬───┘
+                   │    │
+          ┌────────▼┐  ┌▼─────────┐
+          │Runtime  │  │  Tools   │
+          │terminal,│  │ git, gh, │
+          │ files   │  │ npm, cli │
+          └─────────┘  └──────────┘
+```
 
 ---
 
-# Beyond Localhost
+# Model
 
-Our hello world demo only works on **localhost** — no one else can see it
+The AI brain itself — you have choices
 
-- **GitHub Pages** solves this for static sites
-- For self-hosted apps that need a network, **Tailscale** is a great option
-- Encrypted mesh VPN — no port forwarding, no firewall config
-- Your devices and friends' devices on one private network
+- **Big labs** — OpenAI (GPT), Anthropic (Claude), Google (Gemini)
+- **OpenRouter** — one API, access to many models
+- **Self-hosted** — run models on your own hardware (Gemma, Qwen)
 
+**Harness + model interact**: Claude Code works best with Claude models, Copilot works best with OpenAI models
 
+Pick based on your task, budget, and privacy needs 
+
+---
+
+# Skills & Config
+
+How you customize agent behavior — multiple layers:
+
+| Config | Scope | Standard? |
+|--------|-------|-----------|
+| **CLAUDE.md** / **AGENTS.md** | Project instructions | Most harnesses |
+| **Skills** | Reusable workflows | Claude format spreading |
+| **Hooks** | Shell triggers on events | Claude Code only |
+| **settings.json** | Harness settings | Claude Code only |
+
+---
+
+# Skills & Config
+
+Skills:
+- Control **which tools** the agent can use
+- **Inherit files** for context
+- **Combine with scripts** for complex workflows
+- Use the **skill builder skill** to create new skills
+- Or just ask vanilla Claude to write one for you
+
+---
+
+# Tokens & Context
+
+**Tokens** — chunks of text the model reads and writes
+- "hello" = 1 token, "unbelievable" = 3 tokens
+- ~4 characters per tokens
+- Code is more token-dense than prose
+
+**Context** — the window of text the model can see at once
+- Too much = slow and expensive
+- Too little = the agent forgets what it's doing
+
+```bash
+/context   # run this in Claude Code to see current usage
+```
+
+---
+
+# Cloud vs Local
+
+Where does the harness run
+
+**Local** (your laptop)
+- Easier to manage
+- Great for hobby projects
+- No monthly server costs
+
+**Cloud** (remote server)
+- Runs all the time, accessible from anywhere
+- Needed for bots, APIs, shared apps
+
+Self hosting is a talk in its own right
+
+---
+
+# Markdown
+
+The universal data format for agents
+
+- **Config** is markdown — CLAUDE.md, skills, docs
+- **Data store** — use markdown files as a lightweight database
+- **Open format** — no vendor lock-in, works everywhere
+- **Obsidian** — great viewer/editor for markdown vaults
+- Agents read and write markdown natively — it's their first language
+- Claude can work in your obsidian knowledgebase, e.g., organizing, linking, summarizing
+
+---
+
+# Git
+
+Your **safety net** and collaboration layer
+
+- Agents can use it on your behalf, just ask "set up a git repo" 
+- Version control means you can always undo agent mistakes
+- A **git repo** is a .git folder in your project, that's all there is to it
+- **GitHub** is a way to publish a git repo online for sharing
+- Use GitHub instead of dropbox/google drive/etc.
+- Not great for video, photos, etc.; history is expensive
+
+---
+
+# Safety
+
+Claude's bash tool can do **almost anything** on your machine
+
+- By default, Claude **asks permission** before running commands
+- `--dangerously-skip-permissions` — skips all prompts
+  - Useful for demos, risky for real work
+  - Better to specify explicit allow permissions in .claude/settings.json
+  - Difficult but more secure to run in a docker container
+
+Rule of thumb: if you wouldn't let a stranger run the command, don't skip permissions
+
+---
+
+# CLI Tools
+
+**Token-efficient** — commands are short by design (~60 characters)
+- Built for humans in small terminals — naturally concise for agents too
+
+**Better than MCP** for personal projects
+- MCP adds complexity for access control you don't need solo
+- CLI tools are simpler: install, authenticate, use
+
+**Auth once, agent uses it forever**
+```bash
+gh auth login        # authenticate GitHub CLI
+```
+
+Skip MCP for personal projects — just use the CLI
